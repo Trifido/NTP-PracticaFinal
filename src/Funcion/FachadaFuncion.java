@@ -19,8 +19,20 @@ public class FachadaFuncion {
     public FachadaFuncion() {
     }
     
-    void addIncognita(Incognita x){
-        incognitas.add(x);
+    void addIncognita(){
+        incognitas.add(new Incognita());
+    }
+    
+    Incognita getIncognita(int indice){
+        return incognitas.get(indice);
+    }
+
+    public Funcion getFun() {
+        return fun;
+    }
+
+    public void setFun(Funcion fun) {
+        this.fun = fun;
     }
     
     Float Resultado (){
@@ -43,5 +55,13 @@ public class FachadaFuncion {
         return new Producto(primera, segunda);
     }
     
+    
+    public static Operacion Sin(Operacion operacion){
+        return new Seno(operacion);
+    }
+    
+    public static Operacion Cos(Operacion operacion){
+        return new Coseno(operacion);
+    }
     
 }
