@@ -9,7 +9,7 @@ public class Buscador extends Thread implements Observer{
     private float resultado;
     private EstadoBusqueda estado;
     private Funcion funcion;
-    private Algoritmo alg;
+    private Estrategia alg;
     private int intentos;
     
     public Buscador(EstadoBusqueda estado){
@@ -22,7 +22,7 @@ public class Buscador extends Thread implements Observer{
         this.funcion= funcion;
     }
     
-    public void setAlgoritmo(Algoritmo alg){
+    public void setAlgoritmo(Estrategia alg){
         this.alg= alg;
     }
     

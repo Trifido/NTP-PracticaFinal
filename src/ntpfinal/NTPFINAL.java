@@ -10,7 +10,7 @@ public class NTPFINAL {
         Observable estado= new EstadoBusqueda();
         Observer buscador= new Buscador((EstadoBusqueda) estado);
         Funcion funcion= new Funcion();
-        Algoritmo alg= new BAleatoriaSimple();
+        Estrategia alg= new BAleatoriaSimple();
         
         ((Buscador)buscador).setFuncion(funcion);
         ((Buscador)buscador).setAlgoritmo(alg);

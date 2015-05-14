@@ -9,7 +9,7 @@ package ntpfinal;
  *
  * @author Vicente
  */
-public class RecocidoSimulado implements Algoritmo{
+public class RecocidoSimulado implements Estrategia{
 
     @Override
     public float getSolucion(Funcion funcion) {

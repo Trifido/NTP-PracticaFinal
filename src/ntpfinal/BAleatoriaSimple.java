@@ -4,7 +4,7 @@ package ntpfinal;
  *
  * @author Vicente
  */
-public class BAleatoriaSimple implements Algoritmo{
+public class BAleatoriaSimple implements Estrategia{
     private float x, y;
     private float resultado;
     
@@ -16,6 +16,10 @@ public class BAleatoriaSimple implements Algoritmo{
     public float getSolucion(Funcion funcion) {
         x= (float) (Math.random()*100);
         y= (float) (Math.random()*100);
+        
+        
+        //funcion.getIngnita(0).setValue(X);
+        
         
         return funcion.resultado(x, y);
     } 
