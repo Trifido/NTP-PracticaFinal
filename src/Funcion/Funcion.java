@@ -20,6 +20,10 @@ public class Funcion extends Operacion{
         super(X);
     }
     
+    public void Set(DecoradorOperacion F){
+        X = F;
+    }
+    
     public Incognita addIncognita(){
         Incognita nueva = new Incognita();
         incognitas.add(nueva);
