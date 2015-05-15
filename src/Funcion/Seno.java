@@ -21,8 +21,8 @@ public class Seno extends DecoradorOperacion{
     } 
 
     @Override
-    public Float Resultado() {
-        return (float) Math.sin(X.Resultado());
+    public Double Resultado() {
+        return Math.sin(X.Resultado());
     }
     
     

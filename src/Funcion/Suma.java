@@ -19,7 +19,7 @@ public class Suma extends DecoradorOperacion {
     }   
     
     @Override
-    public Float Resultado() {
+    public Double Resultado() {
         return X.Resultado() + Y.Resultado();
     }
     

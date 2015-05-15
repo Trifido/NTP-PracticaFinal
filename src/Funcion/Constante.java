@@ -10,16 +10,16 @@ package Funcion;
  *
  * @author Benjamín
  */
-public class Producto extends DecoradorOperacion {
-    Operacion Y;
+public class Constante  extends DecoradorOperacion{
+    Double valor;
 
-    public Producto(Operacion X, Operacion Y) {
-        super(X);
-        this.Y = Y;
-    }  
-    
+    public Constante(Double valor) {
+        super();
+        this.valor = valor;
+    }
+
     @Override
     public Double Resultado() {
-        return X.Resultado() * Y.Resultado();
-    }
+        return valor;
+    }    
 }

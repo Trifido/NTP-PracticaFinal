@@ -12,27 +12,27 @@ package Funcion;
  */
 public class Incognita extends DecoradorOperacion{
 
-    Float valor;
+    Double valor;
 
     public Incognita(){
         super();
     }
 
-    public Incognita(Float valor) {
+    public Incognita(Double valor) {
         super();
         this.valor = valor;
     }
 
-    public Float getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
     @Override
-    public Float Resultado() {
+    public Double Resultado() {
         return valor;
     }
 

@@ -21,7 +21,7 @@ public class Tangente extends DecoradorOperacion{
     } 
 
     @Override
-    public Float Resultado() {
-        return (float) Math.cos(X.Resultado());
+    public Double Resultado() {
+        return Math.cos(X.Resultado());
     }
 }

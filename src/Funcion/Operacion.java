@@ -21,7 +21,7 @@ public abstract class Operacion {
         this.X = X;
     }
     
-    public abstract Float Resultado();
+    public abstract Double Resultado();
     
     
 }

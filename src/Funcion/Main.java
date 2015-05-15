@@ -17,14 +17,13 @@ public class Main {
      */
     public static void main(String[] args) {
        //Funcion sum = new Funcion(2,3);
-       FachadaFuncion f = new FachadaFuncion();
+       //Operaciones f = new Operaciones();
        
-       f.addIncognita();
-       f.addIncognita();
+ 
        
-       //f.setFun(FachadaFuncion.Sum(new Incognita(21.5f), FachadaFuncion.Sum(FachadaFuncion.Mul(f.getIncognita(0), FachadaFuncion.Sin(FachadaFuncion.Mul(new Incognita((4.f * Math.PI)), f.getIncognita(1)))), args)));
+       //f.setFun(Operaciones.Sum(new Incognita(21.5f), Operaciones.Sum(Operaciones.Mul(f.getIncognita(0), Operaciones.Sin(Operaciones.Mul(new Incognita((4.f * Math.PI)), f.getIncognita(1)))), args)));
        
-       System.out.println(f.Resultado());
+       //System.out.println(f.Resultado());
        
     }
     

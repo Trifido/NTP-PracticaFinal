@@ -22,6 +22,6 @@ public abstract class DecoradorOperacion extends Operacion {
     }
     
     @Override
-    public abstract Float Resultado();
+    public abstract Double Resultado();
     
 }

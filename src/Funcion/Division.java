@@ -19,11 +19,11 @@ public class Division extends DecoradorOperacion {
     }  
     
     @Override
-    public Float Resultado() {
-        Float dividendo = Y.Resultado();
+    public Double Resultado() {
+        Double dividendo = Y.Resultado();
         
         if(dividendo == 0)
-            return X.Resultado() * Float.POSITIVE_INFINITY;
+            return X.Resultado() * Double.POSITIVE_INFINITY;
         
         return X.Resultado() / dividendo;
     }
