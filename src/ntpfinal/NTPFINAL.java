@@ -1,5 +1,13 @@
 package ntpfinal;
 
+import Estrategias.BAleatoriaSimple;
+import Estrategias.Estrategia;
+import Estrategias.Funcion;
+import Observador.Observer;
+import Observador.Observable;
+import Observador.EstadoBusqueda;
+import Observador.Buscador;
+
 /**
  *
  * @author Vicente
