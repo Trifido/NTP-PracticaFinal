@@ -10,5 +10,5 @@ package Observador;
  * @author Vicente
  */
 public interface Observer {
-    public void actualizar(float nuevoMaximo);
+    public void actualizar(double nuevoMaximo);
 }

@@ -1,18 +1,20 @@
 package Observador;
 
+import Estrategias.Algoritmo;
 import Estrategias.Estrategia;
-import Estrategias.Funcion;
+import Funcion.Funcion;
 
 /**
  *
  * @author Vicente
  */
 public class Buscador extends Thread implements Observer{
-    private float maximoBuscado;
-    private float resultado;
+    private double maximoBuscado;
+    private double resultado;
     private EstadoBusqueda estado;
     private Funcion funcion;
-    private Estrategia alg;
+    private Estrategia est;
+    private Algoritmo alg;
     private int intentos;
     
     public Buscador(EstadoBusqueda estado){
@@ -26,18 +28,18 @@ public class Buscador extends Thread implements Observer{
     }
     
     public void setAlgoritmo(Estrategia alg){
-        this.alg= alg;
+        this.est= alg;
     }
     
     @Override
-    public void actualizar(float nuevoMaximo) {
+    public void actualizar(double nuevoMaximo) {
         maximoBuscado= nuevoMaximo;
     }
     
     @Override
     public void run(){
         while(true){
-            resultado= alg.getSolucion(funcion);
+            resultado= alg.busca(funcion);
             
             if(resultado > maximoBuscado){
                 estado.setMaximo(resultado);

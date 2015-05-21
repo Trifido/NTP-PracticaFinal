@@ -17,7 +17,7 @@ public abstract class Observable {
         observadores.remove(ob);
     }
     
-    protected void notificar(float nuevoMaximo){
+    protected void notificar(double nuevoMaximo){
         for(Observer ob : observadores)
             ob.actualizar(nuevoMaximo);
     }
