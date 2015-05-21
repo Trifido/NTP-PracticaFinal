@@ -5,12 +5,14 @@
  */
 package Estrategias;
 
+import Funcion.Funcion;
+
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente 
  */
 public class Algoritmo {
-    private Estrategia estrategia;
+    private final Estrategia estrategia;
     
     public Algoritmo(Estrategia aux){
         estrategia= aux;
@@ -19,5 +21,9 @@ public class Algoritmo {
     public Estrategia getEstrategia(){
         return estrategia;
     }
+
+     public Double busca(Funcion fun){
+         return estrategia.opera(fun);
+     }
     
 }

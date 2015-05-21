@@ -1,9 +1,15 @@
 package Estrategias;
 
+import Funcion.Funcion;
+
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
-public interface Estrategia {
-    public float getSolucion(Funcion funcion);
+public abstract class Estrategia {
+
+    public Estrategia() {
+    }
+    
+    public abstract Double opera(Funcion fun);
 }

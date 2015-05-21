@@ -8,7 +8,7 @@ package Funcion;
 
 /**
  *
- * @author Benjamín
+ * @author Benjamín y Vicente
  */
 public abstract class DecoradorOperacion extends Operacion {
     Operacion X;

@@ -6,11 +6,12 @@
 
 package Funcion;
 
+import Estrategias.Algoritmo;
 import java.util.ArrayList;
 
 /**
  *
- * @author Benjamín
+ * @author Benjamín y Vicente
  */
 public class Funcion extends Operacion{
 
@@ -34,9 +35,17 @@ public class Funcion extends Operacion{
         return incognitas.get(indice);
     }
     
+    public int getNumeroIncognitas(){
+        return incognitas.size();
+    }
+    
     @Override
     public Double Resultado() {
         return X.Resultado();
+    }
+    
+    public void Maximiza(Algoritmo alg){
+        alg.busca(this);
     }
     
 }

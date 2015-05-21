@@ -1,26 +1,23 @@
 package Estrategias;
 
+import Funcion.Funcion;
+
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
-public class BAleatoriaSimple implements Estrategia{
-    private float x, y;
-    private float resultado;
-    
+public class BAleatoriaSimple extends Estrategia{
+   
     public BAleatoriaSimple(){
-        x= y= 0.0f;
     }
-    
+
+
     @Override
-    public float getSolucion(Funcion funcion) {
-        x= (float) (Math.random()*100);
-        y= (float) (Math.random()*100);
+    public Double opera(Funcion fun) {
+        for (int i = 0; i < fun.getNumeroIncognitas(); i++)
+            fun.getIncognita(i).setValor((Double) (Math.random()*100));
         
+        return fun.Resultado();
         
-        //funcion.getIngnita(0).setValue(X);
-        
-        
-        return funcion.resultado(x, y);
-    } 
+    }
 }
