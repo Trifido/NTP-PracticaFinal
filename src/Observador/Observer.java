@@ -7,7 +7,7 @@ package Observador;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
 public interface Observer {
     public void actualizar(double nuevoMaximo);

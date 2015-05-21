@@ -2,7 +2,7 @@ package Observador;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
 public class EstadoBusqueda extends Observable{
     private double maximo;
@@ -15,6 +15,7 @@ public class EstadoBusqueda extends Observable{
         if(maximo < maxBuscador){
             maximo= maxBuscador;
             notificar(maximo);
+            System.out.println("Maximo: " + maximo);
         }
     }
 }

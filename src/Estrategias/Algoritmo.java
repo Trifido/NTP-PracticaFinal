@@ -12,9 +12,13 @@ import Funcion.Funcion;
  * @author Benjamín y Vicente 
  */
 public class Algoritmo {
-    private final Estrategia estrategia;
+    private Estrategia estrategia;
     
     public Algoritmo(Estrategia aux){
+        estrategia= aux;
+    }
+    
+    public void setEstrategia(Estrategia aux){
         estrategia= aux;
     }
     

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
 public abstract class Observable {
     private ArrayList<Observer> observadores;
@@ -18,7 +18,8 @@ public abstract class Observable {
     }
     
     protected void notificar(double nuevoMaximo){
-        for(Observer ob : observadores)
+        observadores.stream().forEach((ob) -> {
             ob.actualizar(nuevoMaximo);
+        });
     }
 }

@@ -9,6 +9,7 @@ import Funcion.Funcion;
 public class BAleatoriaSimple extends Estrategia{
    
     public BAleatoriaSimple(){
+        
     }
 
 
