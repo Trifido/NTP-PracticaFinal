@@ -7,7 +7,6 @@ import Funcion.Funcion;
  * @author Benjamín y Vicente
  */
 public abstract class Estrategia {
-
     public Estrategia() {
     }
     

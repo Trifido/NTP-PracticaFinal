@@ -47,11 +47,11 @@ public class Buscador implements Observer, Runnable{
                 estado.setMaximo(resultado);
             }
             else{
-                System.out.println("Buscador-" + id + ": " + resultado);
+                //System.out.println("Buscador-" + id + ": " + resultado);
                 intentos++;
             }
             try {
-                sleep(100);
+                sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -11,6 +11,7 @@ import Observador.Observer;
 import Observador.Observable;
 import Observador.EstadoBusqueda;
 import Observador.Buscador;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,13 +33,20 @@ public class NTPFINAL {
         Funcion f = new Funcion();
         Incognita x1 = f.addIncognita();
         Incognita x2 = f.addIncognita();
-       
+        
         f.Set(Operaciones.Sum(21.5, Operaciones.Mul(x1, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x1)))));
         f.Set(Operaciones.Sum(f.Get(), Operaciones.Mul(x2, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x2)))));
         
+        Funcion f2 = new Funcion();
+        Incognita x11 = f2.addIncognita();
+        Incognita x22 = f2.addIncognita();
+       
+        f2.Set(Operaciones.Sum(21.5, Operaciones.Mul(x11, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x11)))));
+        f2.Set(Operaciones.Sum(f2.Get(), Operaciones.Mul(x22, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x22)))));
+        
         //Añadimos a los observadores la función
         buscador1.setFuncion(f);
-        buscador2.setFuncion(f);
+        buscador2.setFuncion(f2);
         
         //Añadimos a los observadores el algoritmo
         Algoritmo alg= new Algoritmo(new BAleatoriaSimple());
@@ -50,15 +58,6 @@ public class NTPFINAL {
         ExecutorService executor= Executors.newFixedThreadPool(2);
         executor.execute(buscador1);
         executor.execute(buscador2);
-        
-     /*   Observable estado= new EstadoBusqueda();
-        Observer buscador= new Buscador((EstadoBusqueda) estado);
-        Funcion funcion= new Funcion();
-        Estrategia alg= new BAleatoriaSimple();
-        
-        ((Buscador)buscador).setFuncion(funcion);
-        ((Buscador)buscador).setAlgoritmo(alg);
-    */
     }
     
 }

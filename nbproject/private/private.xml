@@ -5,13 +5,11 @@
         <group>
             <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Observador/Buscador.java</file>
             <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Funcion/Funcion.java</file>
-            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Observador/EstadoBusqueda.java</file>
-            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Funcion/Main.java</file>
-            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Funcion/Suma.java</file>
-            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Observador/Observer.java</file>
+            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Estrategias/RecocidoSimulado.java</file>
+            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Estrategias/Estrategia.java</file>
+            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Estrategias/BAleatoriaSimple.java</file>
+            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Funcion/Incognita.java</file>
             <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/ntpfinal/NTPFINAL.java</file>
-            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Observador/Observable.java</file>
-            <file>file:/C:/Users/VicenteMR/Desktop/NTP-PracticaFinal/src/Funcion/Operaciones.java</file>
         </group>
     </open-files>
 </project-private>
