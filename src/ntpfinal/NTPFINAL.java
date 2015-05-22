@@ -4,6 +4,8 @@ import Estrategias.Algoritmo;
 import Estrategias.BAleatoriaSimple;
 import Estrategias.Estrategia;
 import Funcion.Funcion;
+import Funcion.Incognita;
+import Funcion.Operaciones;
 import Observador.Observer;
 import Observador.Observable;
 import Observador.EstadoBusqueda;
@@ -24,11 +26,16 @@ public class NTPFINAL {
         Buscador buscador2= new Buscador((EstadoBusqueda) estado);
         
         //Creamos una funcion
-        //Funcion func= new Funcion();
+        Funcion f = new Funcion();
+        Incognita x1 = f.addIncognita();
+        Incognita x2 = f.addIncognita();
+       
+        f.Set(Operaciones.Sum(21.5, Operaciones.Mul(x1, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x1)))));
+        f.Set(Operaciones.Sum(f.Get(), Operaciones.Mul(x2, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x2)))));
         
         //Añadimos a los observadores la función
-        buscador1.setFuncion(null);
-        buscador1.setFuncion(null);
+        buscador1.setFuncion(f);
+        buscador1.setFuncion(f);
         
         //Añadimos a los observadores el algoritmo
         Algoritmo alg= new Algoritmo(new BAleatoriaSimple());

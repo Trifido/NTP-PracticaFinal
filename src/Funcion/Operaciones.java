@@ -15,15 +15,15 @@ public class Operaciones {
       /////////////////////////////////////////////////////
      //                    Suma                         //
     /////////////////////////////////////////////////////
-    public static Operacion Sum(Operacion x1, Operacion x2){
+    public static DecoradorOperacion Sum(Operacion x1, Operacion x2){
         return new Suma(x1, x2);
     }
     
-    public static Operacion Sum(Double x1, Operacion x2){
+    public static DecoradorOperacion Sum(Double x1, Operacion x2){
         return new Suma(new Constante(x1), x2);
     }
     
-    public static Operacion Sum(Operacion x1, Double x2){
+    public static DecoradorOperacion Sum(Operacion x1, Double x2){
         return new Suma(x1, new Constante(x2));
     }
     
@@ -31,15 +31,15 @@ public class Operaciones {
      //                    Resta                        //
     /////////////////////////////////////////////////////
     
-    public static Operacion Res(Operacion x1, Operacion x2){
+    public static DecoradorOperacion Res(Operacion x1, Operacion x2){
         return new Resta(x1, x2);
     }
     
-    public static Operacion Res(Double x1, Operacion x2){
+    public static DecoradorOperacion Res(Double x1, Operacion x2){
         return new Resta(new Constante(x1), x2);
     }
     
-    public static Operacion Res(Operacion x1, Double x2){
+    public static DecoradorOperacion Res(Operacion x1, Double x2){
         return new Resta(x1, new Constante(x2));
     }
     
@@ -48,15 +48,15 @@ public class Operaciones {
     /////////////////////////////////////////////////////
     
     
-    public static Operacion Mul(Operacion x1, Operacion x2){
+    public static DecoradorOperacion Mul(Operacion x1, Operacion x2){
         return new Producto(x1, x2);
     }
     
-    public static Operacion Mul(Double x1, Operacion x2){
+    public static DecoradorOperacion Mul(Double x1, Operacion x2){
         return new Producto(new Constante(x1), x2);
     }
     
-    public static Operacion Mul(Operacion x1, Double x2){
+    public static DecoradorOperacion Mul(Operacion x1, Double x2){
         return new Producto(x1, new Constante(x2));
     }
     

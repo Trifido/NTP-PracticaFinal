@@ -17,18 +17,29 @@ public class Funcion extends Operacion{
 
     ArrayList<Incognita> incognitas;
     
+    public Funcion() {
+        super();
+        incognitas = new ArrayList<>();
+    }
+    
     public Funcion(DecoradorOperacion X) {
         super(X);
+        incognitas = new ArrayList<>();
     }
     
     public void Set(DecoradorOperacion F){
         X = F;
     }
+
+    public DecoradorOperacion Get() {
+        return X;
+    }
+    
+    
     
     public Incognita addIncognita(){
-        Incognita nueva = new Incognita();
-        incognitas.add(nueva);
-        return nueva;
+        incognitas.add(new Incognita());
+        return incognitas.get(incognitas.size()-1);
     } 
     
     public Incognita getIncognita(int indice){
