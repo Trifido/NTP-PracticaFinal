@@ -66,15 +66,15 @@ public class Operaciones {
     /////////////////////////////////////////////////////
     
     
-    public static Operacion Div(Operacion x1, Operacion x2){
+    public static DecoradorOperacion Div(Operacion x1, Operacion x2){
         return new Division(x1, x2);
     }
     
-    public static Operacion Div(Double x1, Operacion x2){
+    public static DecoradorOperacion Div(Double x1, Operacion x2){
         return new Division(new Constante(x1), x2);
     }
     
-    public static Operacion Div(Operacion x1, Double x2){
+    public static DecoradorOperacion Div(Operacion x1, Double x2){
         return new Division(x1, new Constante(x2));
     }
     
@@ -83,15 +83,15 @@ public class Operaciones {
     /////////////////////////////////////////////////////
     
     
-    public static Operacion Sin(Operacion operacion){
+    public static DecoradorOperacion Sin(Operacion operacion){
         return new Seno(operacion);
     }
     
-    public static Operacion Cos(Operacion operacion){
+    public static DecoradorOperacion Cos(Operacion operacion){
         return new Coseno(operacion);
     }
     
-    public static Operacion Tan(Operacion operacion){
+    public static DecoradorOperacion Tan(Operacion operacion){
         return new Tangente(operacion);
     }
     
