@@ -24,4 +24,9 @@ public class Tangente extends DecoradorOperacion{
     public Double Resultado() {
         return Math.cos(X.Resultado());
     }
+    
+    @Override
+    public String toString() {
+        return "Tan(" + X.toString() + ")";
+    }
 }

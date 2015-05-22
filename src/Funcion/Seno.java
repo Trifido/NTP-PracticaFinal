@@ -25,5 +25,8 @@ public class Seno extends DecoradorOperacion{
         return Math.sin(X.Resultado());
     }
     
-    
+    @Override
+    public String toString() {
+        return "Sin(" + X.toString() + ")";
+    }
 }

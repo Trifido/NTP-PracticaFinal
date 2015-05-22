@@ -27,4 +27,9 @@ public class Division extends DecoradorOperacion {
         
         return X.Resultado() / dividendo;
     }
+
+    @Override
+    public String toString() {
+        return "(" + X.toString() + " / " + Y.toString() + ")";
+    }
 }

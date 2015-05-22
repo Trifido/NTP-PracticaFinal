@@ -24,4 +24,11 @@ public class Coseno extends DecoradorOperacion{
     public Double Resultado() {
         return Math.cos(X.Resultado());
     }
+
+    @Override
+    public String toString() {
+        return "Cos(" + X.toString() + ")";
+    }
+    
+    
 }

@@ -58,5 +58,10 @@ public class Funcion extends Operacion{
     public void Maximiza(Algoritmo alg){
         alg.busca(this);
     }
+
+    @Override
+    public String toString() {
+        return X.toString();
+    }
     
 }

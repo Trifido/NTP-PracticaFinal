@@ -11,16 +11,21 @@ package Funcion;
  * @author Benjamín y Vicente
  */
 public class Incognita extends DecoradorOperacion{
-
-    Double valor;
+    private static int INCOGNITAS = 0;
+    private Double valor;
+    private int id;
 
     public Incognita(){
         super();
+        id = INCOGNITAS;
+        INCOGNITAS++;
     }
 
     public Incognita(Double valor) {
         super();
         this.valor = valor;
+        id = INCOGNITAS;
+        INCOGNITAS++;
     }
 
     public Double getValor() {
@@ -34,6 +39,11 @@ public class Incognita extends DecoradorOperacion{
     @Override
     public Double Resultado() {
         return valor;
+    }
+
+    @Override
+    public String toString() {
+        return "X"+id;
     }
 
     

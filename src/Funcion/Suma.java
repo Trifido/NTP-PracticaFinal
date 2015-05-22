@@ -23,4 +23,9 @@ public class Suma extends DecoradorOperacion {
         return X.Resultado() + Y.Resultado();
     }
     
+    @Override
+    public String toString() {
+        return "(" + X.toString() + " + " + Y.toString() + ")";
+    }
+    
 }

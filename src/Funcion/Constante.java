@@ -21,5 +21,12 @@ public class Constante  extends DecoradorOperacion{
     @Override
     public Double Resultado() {
         return valor;
-    }    
+    }  
+
+    @Override
+    public String toString() {
+        return  valor.toString();
+    }
+    
+    
 }
