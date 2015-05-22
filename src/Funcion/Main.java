@@ -22,7 +22,7 @@ public class Main {
        Incognita x1 = f.addIncognita();
        Incognita x2 = f.addIncognita();
        
-       f.Set(Operaciones.Sum(21.5, Operaciones.Mul(x1, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x1)))));
+       f.Set(Operaciones.Sum(21.50, Operaciones.Mul(x1, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x1)))));
        
        f.Set(Operaciones.Sum(f.Get(), Operaciones.Mul(x2, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x2)))));
        

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 public abstract class Observable {
     private ArrayList<Observer> observadores;
     
+    Observable(){
+        observadores= new ArrayList();
+    }
+    
     public void addObservador(Observer ob){
         observadores.add(ob);
     }
@@ -18,8 +22,9 @@ public abstract class Observable {
     }
     
     protected void notificar(double nuevoMaximo){
-        observadores.stream().forEach((ob) -> {
+        //observadores.stream().forEach((ob) -> {
+        for(Observer ob : observadores)
             ob.actualizar(nuevoMaximo);
-        });
+        //});
     }
 }

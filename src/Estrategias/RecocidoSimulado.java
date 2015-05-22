@@ -16,7 +16,7 @@ public class RecocidoSimulado extends Estrategia{
     @Override
     public Double opera(Funcion fun) {
         for (int i = 0; i < fun.getNumeroIncognitas(); i++)
-            fun.getIncognita(i).setValor((Double) (Math.random()*100));
+            fun.getIncognita(i).setValor((Double) (Math.random()*200));
         
         return fun.Resultado();    }
     

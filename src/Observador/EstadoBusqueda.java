@@ -8,6 +8,7 @@ public class EstadoBusqueda extends Observable{
     private double maximo;
     
     public EstadoBusqueda(){
+        super();
         maximo= Float.NEGATIVE_INFINITY;
     }
     

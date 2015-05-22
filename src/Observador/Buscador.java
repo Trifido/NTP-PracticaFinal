@@ -2,12 +2,14 @@ package Observador;
 
 import Estrategias.Algoritmo;
 import Funcion.Funcion;
+import static java.lang.Thread.sleep;
 
 /**
  *
  * @author Benjamín y Vicente
  */
 public class Buscador implements Observer, Runnable{
+    private int id;
     private double maximoBuscado;
     private double resultado;
     private EstadoBusqueda estado;
@@ -15,7 +17,8 @@ public class Buscador implements Observer, Runnable{
     private Algoritmo alg;
     private int intentos;
     
-    public Buscador(EstadoBusqueda estado){
+    public Buscador(int id, EstadoBusqueda estado){
+        this.id= id;
         maximoBuscado= Double.NEGATIVE_INFINITY;
         this.estado= estado;
         intentos= 0;
@@ -40,14 +43,18 @@ public class Buscador implements Observer, Runnable{
             resultado= alg.busca(funcion);
             
             if(resultado > maximoBuscado){
+                System.out.println("Buscador-" + id + " maximo: " + resultado);
                 estado.setMaximo(resultado);
             }
             else{
+                System.out.println("Buscador-" + id + ": " + resultado);
                 intentos++;
             }
-            
-            //if(intentos>20)
-                //cambiarALgoritmo
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

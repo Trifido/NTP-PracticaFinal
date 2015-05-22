@@ -3,6 +3,7 @@ package ntpfinal;
 import Estrategias.Algoritmo;
 import Estrategias.BAleatoriaSimple;
 import Estrategias.Estrategia;
+import Estrategias.RecocidoSimulado;
 import Funcion.Funcion;
 import Funcion.Incognita;
 import Funcion.Operaciones;
@@ -22,9 +23,11 @@ public class NTPFINAL {
     public static void main(String[] args) {
         //Inicializamos el observable (SC) y los observadores (hebras)
         Observable estado= new EstadoBusqueda();
-        Buscador buscador1= new Buscador((EstadoBusqueda) estado);
-        Buscador buscador2= new Buscador((EstadoBusqueda) estado);
+        Buscador buscador1= new Buscador(1,(EstadoBusqueda) estado);
+        Buscador buscador2= new Buscador(2,(EstadoBusqueda) estado);
         
+        estado.addObservador(buscador1);
+        estado.addObservador(buscador2);
         //Creamos una funcion
         Funcion f = new Funcion();
         Incognita x1 = f.addIncognita();
@@ -35,13 +38,13 @@ public class NTPFINAL {
         
         //Añadimos a los observadores la función
         buscador1.setFuncion(f);
-        buscador1.setFuncion(f);
+        buscador2.setFuncion(f);
         
         //Añadimos a los observadores el algoritmo
         Algoritmo alg= new Algoritmo(new BAleatoriaSimple());
-        Algoritmo alg2= new Algoritmo(new BAleatoriaSimple());
+        Algoritmo alg2= new Algoritmo(new RecocidoSimulado());
         buscador1.setAlgoritmo(alg);
-        buscador1.setAlgoritmo(alg2);
+        buscador2.setAlgoritmo(alg2);
         
         //Creamos un contenedor de hebras y ejecutamos las hebras buscadoras
         ExecutorService executor= Executors.newFixedThreadPool(2);
