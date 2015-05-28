@@ -13,6 +13,7 @@ import Funcion.Funcion;
  */
 public class Algoritmo {
     private Estrategia estrategia;
+    Double Min,Max;
     
     public Algoritmo(Estrategia aux){
         estrategia= aux;
