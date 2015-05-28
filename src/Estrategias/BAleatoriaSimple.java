@@ -17,11 +17,12 @@ public class BAleatoriaSimple extends Estrategia{
 
     @Override
     public Double opera(Funcion fun) {
+        
         for (int i = 0; i < fun.getNumeroIncognitas(); i++){
-            fun.getIncognita(i).setValor(ram.nextInt(1000)*1.0);
-            //System.out.println("B1 X" + (i+1) + "= " + fun.getIncognita(i).getValor());
+            double range = Rangos.get(i)[1] - Rangos.get(i)[0];
+            
+            fun.getIncognita(i).setValor((ram.nextDouble()*range) + Rangos.get(i)[0]);
         }
-        //System.out.println("Resultado: " + fun.Resultado());
         return fun.Resultado();
         
     }

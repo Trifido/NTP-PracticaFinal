@@ -12,8 +12,7 @@ import Funcion.Funcion;
  * @author Benjamín y Vicente 
  */
 public class Algoritmo {
-    private Estrategia estrategia;
-    Double Min,Max;
+    private Estrategia estrategia;    
     
     public Algoritmo(Estrategia aux){
         estrategia= aux;
@@ -25,6 +24,10 @@ public class Algoritmo {
     
     public Estrategia getEstrategia(){
         return estrategia;
+    }
+    
+    public void addRange(Double min, Double max){
+        estrategia.addRange(min, max);
     }
 
      public Double busca(Funcion fun){
