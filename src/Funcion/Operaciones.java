@@ -104,51 +104,12 @@ public class Operaciones {
      //              Parse de funciones                 //
     /////////////////////////////////////////////////////
     
-    public static void StrToFun(String equation){
-        ArrayList<String> oper = new ArrayList<>();
-        ArrayList<String> val = new ArrayList<>();
+    public static Funcion StrToFun(String equation){
+        PriorityQueue<Prioridad> oper = new PriorityQueue<>();
+        PriorityQueue<Prioridad> val = new PriorityQueue();
+        ArrayList<String> inc = new ArrayList<>();
         
-        /*int token  = 0;
-        boolean isAntNumber = false;
-        String cadena = str.toUpperCase();
-        
-        /*ArrayList<Character> oper = new ArrayList<>();
-        ArrayList<Character> val = new ArrayList<>();* /
-        
-        
-        for (token = 0; token < str.length(); token++){
-            char car = cadena.charAt(token);
-            
-            switch(car){
-             case '+':
-             case '-':
-             case '*':
-             case '/':
-                oper.add(car);
-                break;
-             case 'S':
-                 if (cadena.substring(token, token+3).compareTo("SIN") == 0){
-                     token+=2;
-                     oper.add(car);
-                     System.out.println("Añade SIN " + cadena.charAt(token));
-                 }
-                 break;
-            
-             case 'C':
-                 if (cadena.substring(token, token+3).compareTo("COS") == 0){
-                     token+=3;
-                     oper.add(car);
-                 }
-                 break;
-                 
-             case 'T':
-                 if (cadena.substring(token, token+3).compareTo("TAN") == 0){
-                     token+=2;
-                     oper.add(car);
-                 }
-                 break;
-            }
-        }*/
+        Funcion f = new Funcion();
         
         String regex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
 
@@ -158,15 +119,63 @@ public class Operaciones {
         int prioridad = 0;
         
         for(String i : parse){
-            if(Double.isNaN(Double.parseDouble(i))){
-                
+            boolean isNumber = true;
+            
+            try
+            {
+              Double.parseDouble(i);
+            }
+            catch(NumberFormatException e)
+            {
+              isNumber = false;
+            }
+            
+            if(isNumber){
+                val.add(new Prioridad(i, prioridad));
             }else{
+                switch(i){
+                    case "(":
+                        prioridad++;
+                        break;
+                    case ")":
+                        prioridad--;
+                        break;
+                    case "+":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;
+                    case "-":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;
+                    case "*":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;
+                    case "/":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;
+                    case "sin":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;
+                    case "cos":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;
+                    case "tan":
+                        oper.add(new Prioridad(i, prioridad));
+                        break;  
+                        
+                    default:
+                        if (!inc.contains(i)){
+                            f.addIncognita();
+                            inc.add(i);
+                        }
+                        val.add(new Prioridad(i, prioridad));
+                        break;
                 
+                }
             }
         }
         
-           
-        }
+          return f; 
+    }
     
     
     
