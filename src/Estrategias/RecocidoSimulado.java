@@ -15,8 +15,13 @@ import java.util.Random;
  */
 public class RecocidoSimulado extends Estrategia{
     protected Random ram;
+    
     public RecocidoSimulado(){
         ram= new SecureRandom();
+    }
+    
+    public String getTipo(){
+        return "RecocidoSimulado";
     }
     
     @Override

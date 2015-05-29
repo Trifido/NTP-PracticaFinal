@@ -10,18 +10,19 @@ import Funcion.Operaciones;
 import Observador.Observable;
 import Observador.EstadoBusqueda;
 import Observador.Buscador;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
 public class NTPFINAL {
 
     public static void main(String[] args) {
         //Inicializamos el observable (SC) y los observadores (hebras)
-        Observable estado= new EstadoBusqueda();
+        Observable estado= EstadoBusqueda.getInstance();
         Buscador buscador1= new Buscador(1);
         Buscador buscador2= new Buscador(2);
         
@@ -48,16 +49,17 @@ public class NTPFINAL {
         buscador1.setFuncion(f);
         buscador2.setFuncion(f2);
         
-        //Añadimos a los observadores el algoritmo
-        Algoritmo alg= new Algoritmo(new BAleatoriaSimple());
-        Algoritmo alg2= new Algoritmo(new BAleatoriaMultiple());
+        //Añadimos a los observadores los 3 algoritmos
+        ArrayList<Algoritmo> algoritmos= new ArrayList();
+        algoritmos.add(new Algoritmo(new BAleatoriaSimple()));
+        algoritmos.add(new Algoritmo(new BAleatoriaMultiple()));
+        algoritmos.add(new Algoritmo(new RecocidoSimulado()));  
         
+        algoritmos.get(0).addRange(-0.5, 0.5);
+        algoritmos.get(1).addRange(-0.5, 0.5);
         
-        alg.addRange(-0.5, 0.5);
-        alg2.addRange(-0.5, 0.5);
-        
-        buscador1.setAlgoritmo(alg);
-        buscador2.setAlgoritmo(alg2);
+        buscador1.setAlgoritmo(algoritmos);
+        buscador2.setAlgoritmo(algoritmos);
         
         //Creamos un contenedor de hebras y ejecutamos las hebras buscadoras
         ExecutorService executor= Executors.newFixedThreadPool(2);

@@ -9,17 +9,17 @@ import java.util.ArrayList;
  */
 public abstract class Estrategia {
     ArrayList<Double[]> Rangos;
-   // ArrayList<Double> Rangos;
+    
     public Estrategia() {
         Rangos = new ArrayList<>();
     }
+    
+    public abstract String getTipo();
     
     void addRange(double min, double max){
         Double []aux={min,max};
         Rangos.add(aux);
         Rangos.add(aux);
-        //Rangos.add(min);
-       //Rangos.add(max);
     }
     
     public abstract Double opera(Funcion fun);

@@ -10,10 +10,14 @@ import java.util.Random;
  */
 public class BAleatoriaSimple extends Estrategia{
     protected Random ram;
+    
     public BAleatoriaSimple(){
         ram= new SecureRandom();
     }
 
+    public String getTipo(){
+        return "BAleatoriaSimple";
+    }
 
     @Override
     public Double opera(Funcion fun) {

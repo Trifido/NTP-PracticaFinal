@@ -11,7 +11,7 @@ import java.util.Random;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
 public class BAleatoriaMultiple extends Estrategia{
     protected Random ram;
@@ -20,8 +20,12 @@ public class BAleatoriaMultiple extends Estrategia{
     public BAleatoriaMultiple(){
         ram= new SecureRandom();
     }
+    
+    public String getTipo(){
+        return "BAleatoriaMultiple";
+    }
 
-     @Override
+    @Override
     public Double opera(Funcion fun) {
         for (int i = 0; i < fun.getNumeroIncognitas(); i++){
             double range = Rangos.get(i)[1] - Rangos.get(i)[0];
