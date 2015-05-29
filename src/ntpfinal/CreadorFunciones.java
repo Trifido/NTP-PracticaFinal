@@ -38,27 +38,20 @@ public class CreadorFunciones extends javax.swing.JFrame {
     private void initComponents() {
 
         TextResultadoOperacion = new javax.swing.JTextField();
-        addIncognita = new javax.swing.JButton();
-        createFuncion = new javax.swing.JButton();
         next = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        TextMin = new javax.swing.JTextField();
+        TextMax = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addIncognita.setText("Añadir Incognita");
-        addIncognita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addIncognitaActionPerformed(evt);
-            }
-        });
-
-        createFuncion.setText("Crear Función");
-        createFuncion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createFuncionActionPerformed(evt);
-            }
-        });
-
         next.setText("Siguiente");
+
+        jLabel1.setText("Rango de X:");
+
+        TextMin.setText("MIN");
+
+        TextMax.setText("MAX");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,13 +60,17 @@ public class CreadorFunciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextResultadoOperacion)
+                    .addComponent(TextResultadoOperacion, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(next))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(addIncognita)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(createFuncion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(next)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(TextMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -83,25 +80,18 @@ public class CreadorFunciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TextResultadoOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addIncognita)
-                    .addComponent(createFuncion)
-                    .addComponent(next))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(TextMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(next)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addIncognitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addIncognitaActionPerformed
-        componentes.add(function.addIncognita());
-        Actualiza();
-        JOptionPane.showMessageDialog(this, "Has agregado una nueva Incognita.\nDispones de " + function.getNumeroIncognitas() + " Incognitas.");
-    }//GEN-LAST:event_addIncognitaActionPerformed
-
-    private void createFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createFuncionActionPerformed
-
-    }//GEN-LAST:event_createFuncionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,9 +129,10 @@ public class CreadorFunciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TextMax;
+    private javax.swing.JTextField TextMin;
     private javax.swing.JTextField TextResultadoOperacion;
-    private javax.swing.JButton addIncognita;
-    private javax.swing.JButton createFuncion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton next;
     // End of variables declaration//GEN-END:variables
 }

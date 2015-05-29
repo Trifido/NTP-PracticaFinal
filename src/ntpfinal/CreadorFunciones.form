@@ -26,13 +26,20 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TextResultadoOperacion" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="addIncognita" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="createFuncion" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Component id="TextResultadoOperacion" pref="299" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="next" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="TextMin" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TextMax" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -46,12 +53,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="TextResultadoOperacion" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="addIncognita" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="createFuncion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="next" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TextMin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TextMax" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="next" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,25 +69,24 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="TextResultadoOperacion">
     </Component>
-    <Component class="javax.swing.JButton" name="addIncognita">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xf1;adir Incognita"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addIncognitaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="createFuncion">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Crear Funci&#xf3;n"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createFuncionActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="next">
       <Properties>
         <Property name="text" type="java.lang.String" value="Siguiente"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rango de X:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextMin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MIN"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextMax">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MAX"/>
       </Properties>
     </Component>
   </SubComponents>

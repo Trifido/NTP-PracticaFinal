@@ -6,6 +6,11 @@
 
 package Funcion;
 
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Benjamín y Vicente
@@ -94,5 +99,75 @@ public class Operaciones {
     public static DecoradorOperacion Tan(Operacion operacion){
         return new Tangente(operacion);
     }
+    
+      /////////////////////////////////////////////////////
+     //              Parse de funciones                 //
+    /////////////////////////////////////////////////////
+    
+    public static void StrToFun(String equation){
+        ArrayList<String> oper = new ArrayList<>();
+        ArrayList<String> val = new ArrayList<>();
+        
+        /*int token  = 0;
+        boolean isAntNumber = false;
+        String cadena = str.toUpperCase();
+        
+        /*ArrayList<Character> oper = new ArrayList<>();
+        ArrayList<Character> val = new ArrayList<>();* /
+        
+        
+        for (token = 0; token < str.length(); token++){
+            char car = cadena.charAt(token);
+            
+            switch(car){
+             case '+':
+             case '-':
+             case '*':
+             case '/':
+                oper.add(car);
+                break;
+             case 'S':
+                 if (cadena.substring(token, token+3).compareTo("SIN") == 0){
+                     token+=2;
+                     oper.add(car);
+                     System.out.println("Añade SIN " + cadena.charAt(token));
+                 }
+                 break;
+            
+             case 'C':
+                 if (cadena.substring(token, token+3).compareTo("COS") == 0){
+                     token+=3;
+                     oper.add(car);
+                 }
+                 break;
+                 
+             case 'T':
+                 if (cadena.substring(token, token+3).compareTo("TAN") == 0){
+                     token+=2;
+                     oper.add(car);
+                 }
+                 break;
+            }
+        }*/
+        
+        String regex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
+
+    // actual regex becomes (?<=[-+*/()])|(?=[-+*/()])
+
+        String[] parse = equation.split(regex);
+        int prioridad = 0;
+        
+        for(String i : parse){
+            if(Double.isNaN(Double.parseDouble(i))){
+                
+            }else{
+                
+            }
+        }
+        
+           
+        }
+    
+    
     
 }

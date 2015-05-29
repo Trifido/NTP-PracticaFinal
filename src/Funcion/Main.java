@@ -30,6 +30,8 @@ public class Main {
        x1.setValor(0.65);
        x2.setValor(1.0);
        
+       Operaciones.StrToFun("sin(5)");
+       
        //System.out.println(f.Resultado());
        //System.out.println((21.5+8.0*Math.sin(4*Math.PI*8.0)+0*Math.sin(20*Math.PI*0)));
        //f.setFun(Operaciones.Sum(new Incognita(21.5), Operaciones.Sum(Operaciones.Mul(f.getIncognita(0), Operaciones.Sin(Operaciones.Mul(new Incognita((4.f * Math.PI)), f.getIncognita(1)))), args)));
