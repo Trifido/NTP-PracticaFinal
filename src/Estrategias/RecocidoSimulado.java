@@ -22,7 +22,7 @@ public class RecocidoSimulado extends Estrategia{
     @Override
     public Double opera(Funcion fun) {
         for (int i = 0; i < fun.getNumeroIncognitas(); i++){
-            fun.getIncognita(i).setValor(ram.nextInt(1000)*1.0);
+            fun.getIncognita(i).setValor(ram.nextInt(5)*1.0);
             //System.out.println("B2 X" + (i+1) + "= " + fun.getIncognita(i).getValor());
         }
         

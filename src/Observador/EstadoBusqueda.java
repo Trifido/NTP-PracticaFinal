@@ -6,6 +6,7 @@ package Observador;
  */
 public class EstadoBusqueda extends Observable{
     private double maximo;
+    private static EstadoBusqueda INSTANCE;
     
     public EstadoBusqueda(){
         super();
@@ -18,5 +19,11 @@ public class EstadoBusqueda extends Observable{
             notificar(maximo);
             System.out.println("Maximo: " + maximo);
         }
+    }
+    
+    public static EstadoBusqueda getInstance() {
+        if(INSTANCE == null)
+            INSTANCE= new EstadoBusqueda();
+        return INSTANCE;
     }
 }

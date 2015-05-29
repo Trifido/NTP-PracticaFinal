@@ -111,10 +111,10 @@ public class Operaciones {
         
         Funcion f = new Funcion();
         
-        String regex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
+      //  String regex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
 
     // actual regex becomes (?<=[-+*/()])|(?=[-+*/()])
-
+/*
         String[] parse = equation.split(regex);
         int prioridad = 0;
         
@@ -173,7 +173,7 @@ public class Operaciones {
                 }
             }
         }
-        
+        */
           return f; 
     }
     

@@ -21,8 +21,8 @@ public class NTPFINAL {
     public static void main(String[] args) {
         //Inicializamos el observable (SC) y los observadores (hebras)
         Observable estado= new EstadoBusqueda();
-        Buscador buscador1= new Buscador(1,(EstadoBusqueda) estado);
-        Buscador buscador2= new Buscador(2,(EstadoBusqueda) estado);
+        Buscador buscador1= new Buscador(1);
+        Buscador buscador2= new Buscador(2);
         
         estado.addObservador(buscador1);
         estado.addObservador(buscador2);
@@ -50,6 +50,7 @@ public class NTPFINAL {
         //Añadimos a los observadores el algoritmo
         Algoritmo alg= new Algoritmo(new BAleatoriaSimple());
         Algoritmo alg2= new Algoritmo(new RecocidoSimulado());
+        
         
         alg.addRange(-0.5, 0.5);
         alg2.addRange(-0.5, 0.5);

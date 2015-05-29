@@ -9,18 +9,18 @@ import static java.lang.Thread.sleep;
  * @author Benjamín y Vicente
  */
 public class Buscador implements Observer, Runnable{
-    private int id;
+    private final int id;
     private double maximoBuscado;
     private double resultado;
-    private EstadoBusqueda estado;
+    private final EstadoBusqueda estado;
     private Funcion funcion;
     private Algoritmo alg;
     private int intentos;
     
-    public Buscador(int id, EstadoBusqueda estado){
+    public Buscador(int id){
         this.id= id;
         maximoBuscado= Double.NEGATIVE_INFINITY;
-        this.estado= estado;
+        this.estado= EstadoBusqueda.getInstance();
         intentos= 0;
     }
     
@@ -47,7 +47,7 @@ public class Buscador implements Observer, Runnable{
                 estado.setMaximo(resultado);
             }
             else{
-                //System.out.println("Buscador-" + id + ": " + resultado);
+                System.out.println("Buscador-" + id + ": " + resultado);
                 intentos++;
             }
             try {
