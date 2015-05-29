@@ -2,6 +2,7 @@ package ntpfinal;
 
 import Estrategias.Algoritmo;
 import Estrategias.BAleatoriaSimple;
+import Estrategias.BAleatoriaMultiple;
 import Estrategias.RecocidoSimulado;
 import Funcion.Funcion;
 import Funcion.Incognita;
@@ -49,7 +50,7 @@ public class NTPFINAL {
         
         //Añadimos a los observadores el algoritmo
         Algoritmo alg= new Algoritmo(new BAleatoriaSimple());
-        Algoritmo alg2= new Algoritmo(new RecocidoSimulado());
+        Algoritmo alg2= new Algoritmo(new BAleatoriaMultiple());
         
         
         alg.addRange(-0.5, 0.5);
