@@ -3,6 +3,7 @@ package ntpfinal;
 import Estrategias.Algoritmo;
 import Estrategias.BAleatoriaSimple;
 import Estrategias.BAleatoriaMultiple;
+import Estrategias.EstrategiaStore;
 import Estrategias.RecocidoSimulado;
 import Funcion.Funcion;
 import Funcion.Incognita;
@@ -49,11 +50,15 @@ public class NTPFINAL {
         buscador1.setFuncion(f);
         buscador2.setFuncion(f2);
         
+        //Factoría Estrategia
+        EstrategiaStore factoria= new EstrategiaStore();
+        
+        
         //Añadimos a los observadores los 3 algoritmos
         ArrayList<Algoritmo> algoritmos= new ArrayList();
-        algoritmos.add(new Algoritmo(new BAleatoriaSimple()));
-        algoritmos.add(new Algoritmo(new BAleatoriaMultiple()));
-        algoritmos.add(new Algoritmo(new RecocidoSimulado()));  
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("simple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("multiple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("recocido")));  
         
         algoritmos.get(0).addRange(-0.5, 0.5);
         algoritmos.get(1).addRange(-0.5, 0.5);

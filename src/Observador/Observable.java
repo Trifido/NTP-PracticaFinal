@@ -22,9 +22,8 @@ public abstract class Observable {
     }
     
     protected void notificar(double nuevoMaximo){
-        //observadores.stream().forEach((ob) -> {
         observadores.stream().forEach((ob) -> {
             ob.actualizar(nuevoMaximo);
-        }); //});
+        });
     }
 }

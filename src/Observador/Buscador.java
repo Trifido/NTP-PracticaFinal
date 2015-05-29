@@ -46,15 +46,15 @@ public class Buscador implements Observer, Runnable{
     private void cambioEstrategia(){
         intentos++;
         if(intentos==20){
-            this.algActivo= algoritmos.get((id+1)%algoritmos.size());
+            this.algActivo= algoritmos.get((id+1)%3);
             System.out.println("ID-" + this.id + "  Cambiado a " + this.estrategiaActiva);
         }
         else if(intentos==40){
-            this.algActivo= algoritmos.get((id+2)%algoritmos.size());
+            this.algActivo= algoritmos.get((id+2)%3);
             System.out.println("ID-" + this.id + "  Cambiado a " + this.estrategiaActiva);
         }
         else if(intentos==60){
-            this.algActivo= algoritmos.get((id)%algoritmos.size());
+            this.algActivo= algoritmos.get((id+3)%3);
             System.out.println("ID-" + this.id + "  Cambiado a " + this.estrategiaActiva);
             intentos=0;
         }
