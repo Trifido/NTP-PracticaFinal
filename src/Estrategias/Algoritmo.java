@@ -26,6 +26,10 @@ public class Algoritmo {
         return estrategia;
     }
     
+    public String getTipo(){
+        return estrategia.getTipo();
+    }
+    
     public void addRange(Double min, Double max){
         estrategia.addRange(min, max);
     }

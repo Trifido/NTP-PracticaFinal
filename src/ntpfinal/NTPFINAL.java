@@ -2,6 +2,8 @@ package ntpfinal;
 
 import Estrategias.Algoritmo;
 import Estrategias.BAleatoriaSimple;
+import Estrategias.BAleatoriaMultiple;
+import Estrategias.EstrategiaStore;
 import Estrategias.RecocidoSimulado;
 import Funcion.Funcion;
 import Funcion.Incognita;
@@ -9,20 +11,21 @@ import Funcion.Operaciones;
 import Observador.Observable;
 import Observador.EstadoBusqueda;
 import Observador.Buscador;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
  */
 public class NTPFINAL {
 
     public static void main(String[] args) {
         //Inicializamos el observable (SC) y los observadores (hebras)
-        Observable estado= new EstadoBusqueda();
-        Buscador buscador1= new Buscador(1,(EstadoBusqueda) estado);
-        Buscador buscador2= new Buscador(2,(EstadoBusqueda) estado);
+        Observable estado= EstadoBusqueda.getInstance();
+        Buscador buscador1= new Buscador(1);
+        Buscador buscador2= new Buscador(2);
         
         estado.addObservador(buscador1);
         estado.addObservador(buscador2);
@@ -47,15 +50,21 @@ public class NTPFINAL {
         buscador1.setFuncion(f);
         buscador2.setFuncion(f2);
         
-        //Añadimos a los observadores el algoritmo
-        Algoritmo alg= new Algoritmo(new BAleatoriaSimple());
-        Algoritmo alg2= new Algoritmo(new RecocidoSimulado());
+        //Factoría Estrategia
+        EstrategiaStore factoria= new EstrategiaStore();
         
-        alg.addRange(-0.5, 0.5);
-        alg2.addRange(-0.5, 0.5);
         
-        buscador1.setAlgoritmo(alg);
-        buscador2.setAlgoritmo(alg2);
+        //Añadimos a los observadores los 3 algoritmos
+        ArrayList<Algoritmo> algoritmos= new ArrayList();
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("simple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("multiple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("recocido")));  
+        
+        algoritmos.get(0).addRange(-0.5, 0.5);
+        algoritmos.get(1).addRange(-0.5, 0.5);
+        
+        buscador1.setAlgoritmo(algoritmos);
+        buscador2.setAlgoritmo(algoritmos);
         
         //Creamos un contenedor de hebras y ejecutamos las hebras buscadoras
         ExecutorService executor= Executors.newFixedThreadPool(2);
