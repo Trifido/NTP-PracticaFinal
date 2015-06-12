@@ -6,6 +6,11 @@
 
 package ntpfinal;
 
+import Drawable.FuncionDibujable;
+import Funcion.Incognita;
+import Funcion.Operaciones;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Benjamín
@@ -15,8 +20,22 @@ public class Practica3NTP extends javax.swing.JFrame {
     /**
      * Creates new form Practica3NTP
      */
+    FuncionDibujable f;
     public Practica3NTP() {
         initComponents();
+        
+        setLocationRelativeTo(null);
+        parametros.setLocationRelativeTo(null);
+        
+        parametros.setVisible(true);
+        
+        f = new FuncionDibujable();
+        Incognita x = f.addIncognita();
+        f.Set(Operaciones.Sin(x));
+        
+        lienzo.setF(f);
+         
+        LabelFuncion.setText(f.toString());
     }
 
     /**
@@ -28,15 +47,193 @@ public class Practica3NTP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Lienzo = new java.awt.Canvas();
+        parametros = new javax.swing.JFrame();
+        siguiente = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        xMin = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        xMax = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        yMin = new javax.swing.JTextField();
+        yMax = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         LabelFuncion = new javax.swing.JLabel();
+        lienzo = new Drawable.Lienzo();
+        jLabel6 = new javax.swing.JLabel();
+        xMinima = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        xMaxima = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        yMinima = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        yMaxima = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        Cambio = new javax.swing.JButton();
+
+        parametros.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        parametros.setMaximumSize(new java.awt.Dimension(250, 200));
+        parametros.setMinimumSize(new java.awt.Dimension(250, 200));
+        parametros.setPreferredSize(new java.awt.Dimension(250, 200));
+        parametros.setResizable(false);
+
+        siguiente.setText("Siguiente");
+        siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Rango Mínimo de X:");
+
+        xMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xMinActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Rango Máximo de X:");
+
+        xMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xMaxActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Rango Mínimo de Y:");
+
+        jLabel5.setText("Rango Máximo de Y:");
+
+        yMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yMinActionPerformed(evt);
+            }
+        });
+
+        yMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yMaxActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout parametrosLayout = new javax.swing.GroupLayout(parametros.getContentPane());
+        parametros.getContentPane().setLayout(parametrosLayout);
+        parametrosLayout.setHorizontalGroup(
+            parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(parametrosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametrosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(siguiente))
+                    .addGroup(parametrosLayout.createSequentialGroup()
+                        .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(yMin, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(xMin, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(xMax)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(yMax))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        parametrosLayout.setVerticalGroup(
+            parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametrosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(xMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(siguiente)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(655, 522));
+        setMinimumSize(new java.awt.Dimension(655, 522));
+        setResizable(false);
 
         jLabel1.setText("Funcion:");
 
         LabelFuncion.setText("<Aquí se verá la función>");
+
+        javax.swing.GroupLayout lienzoLayout = new javax.swing.GroupLayout(lienzo);
+        lienzo.setLayout(lienzoLayout);
+        lienzoLayout.setHorizontalGroup(
+            lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        lienzoLayout.setVerticalGroup(
+            lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        jLabel6.setText("X[");
+
+        xMinima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xMinimaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText(",");
+
+        xMaxima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xMaximaActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("]");
+
+        jLabel9.setText("Y[");
+
+        yMinima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yMinimaActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText(",");
+
+        yMaxima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yMaximaActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("]");
+
+        Cambio.setText("Cambiar Rangos");
+        Cambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CambioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,13 +241,41 @@ public class Practica3NTP extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Lienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lienzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(yMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(xMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(xMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel8))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(yMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel11)))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(LabelFuncion, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addComponent(Cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -58,17 +283,121 @@ public class Practica3NTP extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lienzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(Lienzo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(xMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(xMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(yMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(yMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Cambio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
+        // TODO add your handling code here:
+        try{
+            double rangoMin = Double.parseDouble(xMin.getText());
+            double rangoMax = Double.parseDouble(xMax.getText());
+            f.setRangoX(rangoMin, rangoMax);
+            
+            rangoMin = Double.parseDouble(yMin.getText());
+            rangoMax = Double.parseDouble(yMax.getText());
+            f.setRangoY(rangoMin, rangoMax);
+            
+            f.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
+            
+            xMinima.setText(f.getRangoMinX()+"");
+            xMaxima.setText(f.getRangoMaxX()+"");
+            
+            yMinima.setText(f.getRangoMinY()+"");
+            yMaxima.setText(f.getRangoMaxY()+"");
+            
+            parametros.setVisible(false);
+            this.setVisible(true);
+            
+        }catch(NumberFormatException e){
+            xMin.requestFocus();
+            JOptionPane.showMessageDialog(this, "Debes de introducir valores numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_siguienteActionPerformed
+
+    private void xMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xMinActionPerformed
+        xMax.requestFocus();
+    }//GEN-LAST:event_xMinActionPerformed
+
+    private void xMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xMaxActionPerformed
+        yMin.requestFocus();
+    }//GEN-LAST:event_xMaxActionPerformed
+
+    private void yMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yMinActionPerformed
+        yMax.requestFocus();
+    }//GEN-LAST:event_yMinActionPerformed
+
+    private void yMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yMaxActionPerformed
+        siguienteActionPerformed(evt);
+    }//GEN-LAST:event_yMaxActionPerformed
+
+    private void xMinimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xMinimaActionPerformed
+        try{
+            double rangoMin = Double.parseDouble(xMinima.getText());
+            double rangoMax = Double.parseDouble(xMaxima.getText());
+            f.setRangoX(rangoMin, rangoMax);
+            
+            rangoMin = Double.parseDouble(yMinima.getText());
+            rangoMax = Double.parseDouble(yMaxima.getText());
+            f.setRangoY(rangoMin, rangoMax);
+            
+            xMinima.setText(f.getRangoMinX()+"");
+            xMaxima.setText(f.getRangoMaxX()+"");
+            yMinima.setText(f.getRangoMinY()+"");
+            yMaxima.setText(f.getRangoMaxY()+"");
+            
+            //f.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
+            lienzo.repaint();
+        }catch(NumberFormatException e){
+            xMinima.setText(f.getRangoMinX()+"");
+            xMaxima.setText(f.getRangoMaxX()+"");
+            yMinima.setText(f.getRangoMinY()+"");
+            yMaxima.setText(f.getRangoMaxY()+"");
+        }
+    }//GEN-LAST:event_xMinimaActionPerformed
+
+    private void xMaximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xMaximaActionPerformed
+        xMinimaActionPerformed(evt);
+    }//GEN-LAST:event_xMaximaActionPerformed
+
+    private void yMinimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yMinimaActionPerformed
+        xMinimaActionPerformed(evt);
+    }//GEN-LAST:event_yMinimaActionPerformed
+
+    private void yMaximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yMaximaActionPerformed
+        yMinimaActionPerformed(evt);
+    }//GEN-LAST:event_yMaximaActionPerformed
+
+    private void CambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambioActionPerformed
+        xMaximaActionPerformed(evt);
+    }//GEN-LAST:event_CambioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,14 +429,38 @@ public class Practica3NTP extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Practica3NTP().setVisible(true);
+                new Practica3NTP().setVisible(false);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cambio;
     private javax.swing.JLabel LabelFuncion;
-    private java.awt.Canvas Lienzo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private Drawable.Lienzo lienzo;
+    private javax.swing.JFrame parametros;
+    private javax.swing.JButton siguiente;
+    private javax.swing.JTextField xMax;
+    private javax.swing.JTextField xMaxima;
+    private javax.swing.JTextField xMin;
+    private javax.swing.JTextField xMinima;
+    private javax.swing.JTextField yMax;
+    private javax.swing.JTextField yMaxima;
+    private javax.swing.JTextField yMin;
+    private javax.swing.JTextField yMinima;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,10 +1,7 @@
 package ntpfinal;
 
 import Estrategias.Algoritmo;
-import Estrategias.BAleatoriaSimple;
-import Estrategias.BAleatoriaMultiple;
 import Estrategias.EstrategiaStore;
-import Estrategias.RecocidoSimulado;
 import Funcion.Funcion;
 import Funcion.Incognita;
 import Funcion.Operaciones;

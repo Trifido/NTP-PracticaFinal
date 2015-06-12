@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Funcion extends Operacion{
 
-    ArrayList<Incognita> incognitas;
+    protected ArrayList<Incognita> incognitas;
     
     public Funcion() {
         super();

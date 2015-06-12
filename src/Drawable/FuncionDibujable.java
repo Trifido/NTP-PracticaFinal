@@ -8,9 +8,8 @@ package Drawable;
 
 import Funcion.DecoradorOperacion;
 import Funcion.Funcion;
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -20,10 +19,16 @@ import java.util.ArrayList;
 public class FuncionDibujable extends Funcion implements Drawable{
 
     int Precision;
-    int rangoMinX, rangoMaxX;
-    int rangoMinY, rangoMaxY;
+    double rangoMinX, rangoMaxX;
+    double rangoMinY, rangoMaxY;
     
-    ArrayList<Double> puntos;
+    double distanciaX, distanciaY;
+    
+    ArrayList<Integer> puntosX;
+    ArrayList<Integer> puntosY;
+    
+    int centroX;
+    int centroY;
 
     public FuncionDibujable() {
         initPorDefecto();
@@ -35,13 +40,32 @@ public class FuncionDibujable extends Funcion implements Drawable{
     }
     
     private void initPorDefecto(){
-        Precision = 1000000;
+        Precision = 100000;
         rangoMaxX = 10;
         rangoMinX = -10;
         
         rangoMaxY = 10;
         rangoMinY = -10;
         
+        puntosX = new ArrayList<>();
+        puntosY = new ArrayList<>();
+        
+    }
+    
+    void swapX(){
+        if(rangoMaxX < rangoMinX){
+            double aux = rangoMaxX;
+            rangoMaxX = rangoMinX;
+            rangoMinX = aux;
+        }
+    }
+    
+    void swapY(){
+        if(rangoMaxY < rangoMinY){
+            double aux = rangoMaxY;
+            rangoMaxY = rangoMinY;
+            rangoMinY = aux;
+        }
     }
 
     public int getPrecision() {
@@ -49,53 +73,128 @@ public class FuncionDibujable extends Funcion implements Drawable{
     }
 
     public void setPrecision(int Precision) {
-        this.Precision = Precision;
+        this.Precision = Math.abs(Precision);
     }
 
-    public int getRangoMinX() {
+    public double getRangoMinX() {
         return rangoMinX;
     }
-
-    public void setRangoMinX(int rangoMinX) {
-        this.rangoMinX = rangoMinX;
-    }
-
-    public int getRangoMaxX() {
+    
+    public double getRangoMaxX() {
         return rangoMaxX;
     }
 
-    public void setRangoMaxX(int rangoMaxX) {
-        this.rangoMaxX = rangoMaxX;
+    public void setRangoX(double MinX, double MaxX) {
+        rangoMinX = MinX;
+        rangoMaxX = MaxX;
+        puntosX.clear();
+        puntosY.clear();
+        swapX();
     }
 
-    public int getRangoMinY() {
+    public double getRangoMinY() {
         return rangoMinY;
     }
-
-    public void setRangoMinY(int rangoMinY) {
-        this.rangoMinY = rangoMinY;
-    }
-
-    public int getRangoMaxY() {
+    
+    public double getRangoMaxY() {
         return rangoMaxY;
     }
-
-    public void setRangoMaxY(int rangoMaxY) {
-        this.rangoMaxY = rangoMaxY;
+    
+    public void setRangoY(double MinY, double MaxY) {
+        rangoMinY = MinY;
+        rangoMaxY = MaxY;
+        puntosX.clear();
+        puntosY.clear();
+        swapY();
     }
     
+    void calculaPuntos(int ancho, int alto){
+        distanciaX = Math.abs(rangoMaxX - rangoMinX);
+        distanciaY = Math.abs(rangoMaxY - rangoMinY);
+        
+        double salto = distanciaX / Precision; 
+        System.out.println("Rango minimo = " + rangoMinY + " Interpolado = " + interpotarRespectoY(rangoMinY, alto));
+        System.out.println("Rango maximo = " + rangoMaxY + " Interpolado = " + interpotarRespectoY(rangoMaxY, alto));
+        System.out.println("Centro Panel = " + alto/2);
+        centroX = -interpotarRespectoX(rangoMinX, ancho);
+        centroY = 0 - interpotarRespectoY(rangoMaxY, alto);
+        
+        double x = rangoMinX;
+        double y;
+        
+        for (int i = 0; i < Precision; i++){
+            this.incognitas.get(0).setValor(x);
+            y = this.Resultado();
+            x += salto;
+            
+            puntosX.add(centroX + interpotarRespectoX(x, ancho));
+            puntosY.add(centroY + (interpotarRespectoY(y, alto))); 
+        }
     
+    }
     
+    int interpotarRespectoX(double valor, int ancho){
+        return (int) ((valor * ancho)/distanciaX);
+    }
+    
+    int interpotarRespectoY(double valor, int alto){
+        return (int) (-(valor * alto)/distanciaY);
+    }
+    
+    void paintCuadricula(Graphics g,int ancho,int alto){
+        
+        int tamMedia = 20;
+        int tamPeque = 10;
+        
+        g.setColor(Color.BLACK);
+        g.fillRect(centroX, 0, 1, alto);
+        g.fillRect(0, centroY, alto, 1);
+        
+        
+        for(int i = (int) Math.ceil(rangoMinX); i < rangoMaxX; i++){
+            int interI = interpotarRespectoX(i, ancho);
+            g.fillRect(interI + centroX, centroY - (tamMedia/2), 1, tamMedia);
+            
+            if(i != 0)
+                g.drawString(i+"", interI + centroX-3, centroY - (tamMedia/2));
+            
+            int interMediaI = interpotarRespectoX(i+0.5, ancho);
+            g.fillRect(interMediaI + centroX, centroY - (tamPeque/2), 1, tamPeque);
+        } 
+        
+        for(int i = (int) Math.ceil(rangoMinY); i < rangoMaxY; i++){
+            int interI = interpotarRespectoY(i, alto);
+            g.fillRect(centroX - (tamMedia/2), interI + centroY , tamMedia, 1);
+            
+            if(i != 0)
+                g.drawString(i+"", centroX + (tamMedia/2), interI +  centroY +3 );
+            
+            int interMediaI = interpotarRespectoY(i+0.5, alto);
+            g.fillRect(centroX - (tamPeque/2), interMediaI + centroY , tamPeque, 1);
+        }
+        
+    }
     
     
     @Override
-    public void Draw(Canvas lienzo) {
-        Graphics2D grafico = (Graphics2D) lienzo.getGraphics();
+    public void Draw(Graphics grafico,int ancho,int alto) {
+        
+        if(puntosX.isEmpty()){
+            calculaPuntos(ancho, alto);
+        }
+        
+        grafico.setColor(Color.WHITE);
+        grafico.fillRect(0, 0, ancho, alto);
+        
         grafico.setColor(Color.BLUE);
-        /**
-         * falta calcular los puntos y recorrerlos para ir pintandolos. 
-         */
-        grafico.drawRect(100, 100, 1, 1);
+        
+        
+        for (int i = 0; i < puntosX.size(); i++){
+            grafico.fillRect(puntosX.get(i), puntosY.get(i), 2, 2);
+        }
+        
+        paintCuadricula(grafico, ancho, alto);
+  
     }
     
 }

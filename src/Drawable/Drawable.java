@@ -6,13 +6,15 @@
 
 package Drawable;
 
-import java.awt.Canvas;
+import java.awt.Graphics;
 
 /**
  *
  * @author Benjamín
  */
+
+
 public interface Drawable {
-    public void Draw(Canvas lienzo);
+    public void Draw(Graphics grafico, int ancho, int alto);
     
 }
