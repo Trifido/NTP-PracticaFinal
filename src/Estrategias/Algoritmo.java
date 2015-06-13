@@ -34,8 +34,8 @@ public class Algoritmo {
         estrategia.addRange(min, max);
     }
 
-     public Double busca(Funcion fun){
-         return estrategia.opera(fun);
-     }
+    public Double busca(Funcion fun){
+        return estrategia.opera(fun);
+    }
     
 }

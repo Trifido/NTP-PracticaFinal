@@ -1,5 +1,7 @@
 package Observador;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author Benjamín y Vicente
@@ -7,6 +9,15 @@ package Observador;
 public class EstadoBusqueda extends Observable{
     private double maximo;
     private static EstadoBusqueda INSTANCE;
+    private JTextField textMax;
+
+    public JTextField getTextMax() {
+        return textMax;
+    }
+
+    public void setTextMax(JTextField textMax) {
+        this.textMax = textMax;
+    }
     
     public EstadoBusqueda(){
         super();
@@ -17,7 +28,7 @@ public class EstadoBusqueda extends Observable{
         if(maximo < maxBuscador){
             maximo= maxBuscador;
             notificar(maximo);
-            System.out.println("Maximo: " + maximo);
+            textMax.setText(maximo + "");
         }
     }
     
@@ -26,4 +37,11 @@ public class EstadoBusqueda extends Observable{
             INSTANCE= new EstadoBusqueda();
         return INSTANCE;
     }
+    
+    @Override
+    public String toString(){
+        return maximo + "";
+    }
+    
+    
 }

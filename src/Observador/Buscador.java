@@ -4,6 +4,7 @@ import Estrategias.Algoritmo;
 import Funcion.Funcion;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Buscador implements Observer, Runnable{
     private ArrayList<Algoritmo>algoritmos;
     private int intentos;
     private String estrategiaActiva;
+    private JTextField textCampo;
     
     public Buscador(int id){
         this.id= id;
@@ -27,6 +29,17 @@ public class Buscador implements Observer, Runnable{
         this.intentos= 0;
         algoritmos= new ArrayList<>();
     }
+
+    public JTextField getTextCampo() {
+        return textCampo;
+    }
+
+    public void setTextCampo(JTextField textCampo) {
+        this.textCampo = textCampo;
+        this.textCampo.setText(estrategiaActiva);
+    }
+    
+    
     
     public void setAlgoritmo(ArrayList<Algoritmo> algs){
         this.algoritmos= algs;
@@ -48,19 +61,18 @@ public class Buscador implements Observer, Runnable{
         if(intentos==20){
             this.algActivo= algoritmos.get((id+1)%3);
             this.estrategiaActiva= algoritmos.get((id)%3).getTipo();
-            System.out.println("ID-" + this.id + "  Cambiado a " + this.estrategiaActiva);
         }
         else if(intentos==40){
             this.algActivo= algoritmos.get((id+2)%3);
              this.estrategiaActiva= algoritmos.get((id+1)%3).getTipo();
-            System.out.println("ID-" + this.id + "  Cambiado a " + this.estrategiaActiva);
         }
         else if(intentos==60){
             this.algActivo= algoritmos.get((id+3)%3);
-             this.estrategiaActiva= algoritmos.get((id+2)%3).getTipo();
-            System.out.println("ID-" + this.id + "  Cambiado a " + this.estrategiaActiva);
+            this.estrategiaActiva= algoritmos.get((id+2)%3).getTipo();
             intentos=0;
         }
+        
+        textCampo.setText(estrategiaActiva);
     }
 
     @Override
@@ -69,7 +81,6 @@ public class Buscador implements Observer, Runnable{
             resultado= algActivo.busca(funcion);
             
             if(resultado > maximoBuscado){
-                System.out.println("Buscador-" + id + " maximo: " + resultado);
                 estado.setMaximo(resultado);
             }
             else{
@@ -81,5 +92,10 @@ public class Buscador implements Observer, Runnable{
                 e.printStackTrace();
             }
         }
+    }
+    
+    @Override
+    public String toString(){
+        return algActivo.getTipo();
     }
 }

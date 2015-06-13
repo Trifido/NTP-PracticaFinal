@@ -14,7 +14,6 @@ import Funcion.FuncionStore;
 import Observador.Buscador;
 import Observador.EstadoBusqueda;
 import Observador.Observable;
-import Observador.Observer;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -96,6 +95,10 @@ public class Practica3NTP extends javax.swing.JFrame {
         algoritmos.get(0).addRange(min, max);
         algoritmos.get(1).addRange(min, max);
         algoritmos.get(2).addRange(min, max);
+        
+        buscador1.setAlgoritmo(algoritmos);
+        buscador2.setAlgoritmo(algoritmos);
+        buscador3.setAlgoritmo(algoritmos);
     }
 
     /**
@@ -149,9 +152,7 @@ public class Practica3NTP extends javax.swing.JFrame {
         Cambio = new javax.swing.JButton();
 
         parametros.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        parametros.setMaximumSize(new java.awt.Dimension(250, 200));
         parametros.setMinimumSize(new java.awt.Dimension(250, 200));
-        parametros.setPreferredSize(new java.awt.Dimension(250, 200));
         parametros.setResizable(false);
 
         siguiente.setText("Siguiente");
@@ -257,6 +258,7 @@ public class Practica3NTP extends javax.swing.JFrame {
 
         jLabel12.setText("Función:");
 
+        TexEstrategiaB1.setEditable(false);
         TexEstrategiaB1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TexEstrategiaB1ActionPerformed(evt);
@@ -265,6 +267,7 @@ public class Practica3NTP extends javax.swing.JFrame {
 
         jLabel14.setText("Máximo encontrado:");
 
+        TextFunc.setEditable(false);
         TextFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFuncActionPerformed(evt);
@@ -273,6 +276,7 @@ public class Practica3NTP extends javax.swing.JFrame {
 
         jLabel15.setText("Estrategia B1:");
 
+        TexMaxEncontrado.setEditable(false);
         TexMaxEncontrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TexMaxEncontradoActionPerformed(evt);
@@ -281,6 +285,7 @@ public class Practica3NTP extends javax.swing.JFrame {
 
         jLabel16.setText("Estrategia B2:");
 
+        TexEstrategiaB2.setEditable(false);
         TexEstrategiaB2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TexEstrategiaB2ActionPerformed(evt);
@@ -289,6 +294,7 @@ public class Practica3NTP extends javax.swing.JFrame {
 
         jLabel17.setText("Estrategia B3:");
 
+        TexEstrategiaB3.setEditable(false);
         TexEstrategiaB3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TexEstrategiaB3ActionPerformed(evt);
