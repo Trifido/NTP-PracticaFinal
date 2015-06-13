@@ -7,7 +7,7 @@ package Funcion;
 public class SimpleFuncionFactory {
     public SimpleFuncionFactory(){}
     
-    public Funcion crearEstrategia(String tipo){
+    public Funcion crearFuncion(String tipo){
         Funcion func= new Funcion();
         switch(tipo){
             case "sin":
