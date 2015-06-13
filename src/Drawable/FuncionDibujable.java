@@ -112,12 +112,10 @@ public class FuncionDibujable extends Funcion implements Drawable{
         distanciaX = Math.abs(rangoMaxX - rangoMinX);
         distanciaY = Math.abs(rangoMaxY - rangoMinY);
         
-        double salto = distanciaX / Precision; 
-        System.out.println("Rango minimo = " + rangoMinY + " Interpolado = " + interpotarRespectoY(rangoMinY, alto));
-        System.out.println("Rango maximo = " + rangoMaxY + " Interpolado = " + interpotarRespectoY(rangoMaxY, alto));
-        System.out.println("Centro Panel = " + alto/2);
+        double salto = distanciaX / Precision;
+        
         centroX = -interpotarRespectoX(rangoMinX, ancho);
-        centroY = 0 - interpotarRespectoY(rangoMaxY, alto);
+        centroY = - interpotarRespectoY(rangoMaxY, alto);
         
         double x = rangoMinX;
         double y;
