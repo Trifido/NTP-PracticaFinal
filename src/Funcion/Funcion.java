@@ -27,6 +27,14 @@ public class Funcion extends Operacion{
         incognitas = new ArrayList<>();
     }
     
+    public Funcion(Funcion X) {
+        incognitas = new ArrayList<>();
+        for(int i = 0; i < X.getNumeroIncognitas(); i++){
+            incognitas.add(X.getIncognita(i));
+        }
+        this.X = X.Get();
+    }
+    
     public void Set(DecoradorOperacion F){
         X = F;
     }
@@ -61,7 +69,9 @@ public class Funcion extends Operacion{
 
     @Override
     public String toString() {
-        return X.toString();
+        if (X!=null)
+            return X.toString();
+        return "";
     }
     
     

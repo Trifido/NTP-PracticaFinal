@@ -39,6 +39,11 @@ public class FuncionDibujable extends Funcion implements Drawable{
         initPorDefecto();
     }
     
+    public FuncionDibujable(Funcion X) {
+        super(X);
+        initPorDefecto();
+    }
+    
     private void initPorDefecto(){
         Precision = 100000;
         rangoMaxX = 10;

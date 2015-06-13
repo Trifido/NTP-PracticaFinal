@@ -16,7 +16,7 @@ public class FuncionStore {
         factoria= new SimpleFuncionFactory();
     }
     
-    public Funcion orderFuncion(String tipo){
+    public Funcion orderFuncion(int tipo){
         return factoria.crearFuncion(tipo);
     }
 }

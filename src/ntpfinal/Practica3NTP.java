@@ -7,6 +7,7 @@
 package ntpfinal;
 
 import Drawable.FuncionDibujable;
+import Funcion.FuncionStore;
 import Funcion.Incognita;
 import Funcion.Operacion;
 import Funcion.Operaciones;
@@ -21,7 +22,8 @@ public class Practica3NTP extends javax.swing.JFrame {
     /**
      * Creates new form Practica3NTP
      */
-    FuncionDibujable f;
+    FuncionDibujable fDibujable;
+    
     public Practica3NTP() {
         initComponents();
         
@@ -30,24 +32,7 @@ public class Practica3NTP extends javax.swing.JFrame {
         
         parametros.setVisible(true);
         
-        f = new FuncionDibujable();
-        Incognita x = f.addIncognita();
-        f.Set(Operaciones.Cos(x));
-        
-        /*Operacion divisor = Operaciones.Res(Operaciones.Mul(x, x), 1.0); 
-        f.Set(Operaciones.Div(Operaciones.Mul(2.0, x), Operaciones.Mul(divisor, divisor)));*/
-        
-        /*Incognita x1 = f.addIncognita();
-        Incognita x2 = f.addIncognita();
-        
-        f.Set(Operaciones.Sum(21.5, Operaciones.Mul(x1, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x1)))));
-        f.Set(Operaciones.Sum(f.Get(), Operaciones.Mul(x2, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x2)))));
-        
-        x2.setValor(0.0);*/
-        
-        lienzo.setF(f);
-         
-        LabelFuncion.setText(f.toString());
+        fDibujable = new FuncionDibujable();
     }
 
     /**
@@ -70,7 +55,7 @@ public class Practica3NTP extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         yMin = new javax.swing.JTextField();
         yMax = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        funciones = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         LabelFuncion = new javax.swing.JLabel();
         lienzo = new Drawable.Lienzo();
@@ -133,7 +118,7 @@ public class Practica3NTP extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin(X)", "Cos(X)", "-2x / (x^2 -1)^2", "21,5 + X * Sin(4*PI*X) + Y * Sin(20*PI*Y)", "21,5 + X * Cos(4*PI*X) + Y * Cos(20*PI*Y)" }));
+        funciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin(X)", "Cos(X)", "-2x / (x^2 -1)^2", "21,5 + X * Sin(4*PI*X) + Y * Sin(20*PI*Y)", "21,5 + X * Cos(4*PI*X) + Y * Cos(20*PI*Y)" }));
 
         javax.swing.GroupLayout parametrosLayout = new javax.swing.GroupLayout(parametros.getContentPane());
         parametros.getContentPane().setLayout(parametrosLayout);
@@ -144,7 +129,7 @@ public class Practica3NTP extends javax.swing.JFrame {
                 .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametrosLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, 0, 147, Short.MAX_VALUE)
+                        .addComponent(funciones, 0, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(siguiente))
                     .addGroup(parametrosLayout.createSequentialGroup()
@@ -186,7 +171,7 @@ public class Practica3NTP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(siguiente)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(funciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -337,19 +322,28 @@ public class Practica3NTP extends javax.swing.JFrame {
         try{
             double rangoMin = Double.parseDouble(xMin.getText());
             double rangoMax = Double.parseDouble(xMax.getText());
-            f.setRangoX(rangoMin, rangoMax);
+            
+            FuncionStore factoria = new FuncionStore();
+            
+            fDibujable = new FuncionDibujable(factoria.orderFuncion(funciones.getSelectedIndex()));
+            
+            fDibujable.setRangoX(rangoMin, rangoMax);
             
             rangoMin = Double.parseDouble(yMin.getText());
             rangoMax = Double.parseDouble(yMax.getText());
-            f.setRangoY(rangoMin, rangoMax);
+            fDibujable.setRangoY(rangoMin, rangoMax);
             
-            f.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
+            fDibujable.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
             
-            xMinima.setText(f.getRangoMinX()+"");
-            xMaxima.setText(f.getRangoMaxX()+"");
+            xMinima.setText(fDibujable.getRangoMinX()+"");
+            xMaxima.setText(fDibujable.getRangoMaxX()+"");
             
-            yMinima.setText(f.getRangoMinY()+"");
-            yMaxima.setText(f.getRangoMaxY()+"");
+            yMinima.setText(fDibujable.getRangoMinY()+"");
+            yMaxima.setText(fDibujable.getRangoMaxY()+"");
+            
+            lienzo.setF(fDibujable);
+         
+            LabelFuncion.setText(fDibujable.toString());
             
             parametros.setVisible(false);
             this.setVisible(true);
@@ -380,24 +374,26 @@ public class Practica3NTP extends javax.swing.JFrame {
         try{
             double rangoMin = Double.parseDouble(xMinima.getText());
             double rangoMax = Double.parseDouble(xMaxima.getText());
-            f.setRangoX(rangoMin, rangoMax);
+            
+            fDibujable.setRangoX(rangoMin, rangoMax);
             
             rangoMin = Double.parseDouble(yMinima.getText());
             rangoMax = Double.parseDouble(yMaxima.getText());
-            f.setRangoY(rangoMin, rangoMax);
             
-            xMinima.setText(f.getRangoMinX()+"");
-            xMaxima.setText(f.getRangoMaxX()+"");
-            yMinima.setText(f.getRangoMinY()+"");
-            yMaxima.setText(f.getRangoMaxY()+"");
+            fDibujable.setRangoY(rangoMin, rangoMax);
+            
+            xMinima.setText(fDibujable.getRangoMinX()+"");
+            xMaxima.setText(fDibujable.getRangoMaxX()+"");
+            yMinima.setText(fDibujable.getRangoMinY()+"");
+            yMaxima.setText(fDibujable.getRangoMaxY()+"");
             
             //f.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
             lienzo.repaint();
         }catch(NumberFormatException e){
-            xMinima.setText(f.getRangoMinX()+"");
-            xMaxima.setText(f.getRangoMaxX()+"");
-            yMinima.setText(f.getRangoMinY()+"");
-            yMaxima.setText(f.getRangoMaxY()+"");
+            xMinima.setText(fDibujable.getRangoMinX()+"");
+            xMaxima.setText(fDibujable.getRangoMaxX()+"");
+            yMinima.setText(fDibujable.getRangoMinY()+"");
+            yMaxima.setText(fDibujable.getRangoMaxY()+"");
         }
     }//GEN-LAST:event_xMinimaActionPerformed
 
@@ -455,7 +451,7 @@ public class Practica3NTP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cambio;
     private javax.swing.JLabel LabelFuncion;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox funciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

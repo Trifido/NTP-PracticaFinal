@@ -19,6 +19,7 @@ public class Incognita extends DecoradorOperacion{
         super();
         id = INCOGNITAS;
         INCOGNITAS++;
+        valor = 0.0;
     }
 
     public Incognita(Double valor) {
