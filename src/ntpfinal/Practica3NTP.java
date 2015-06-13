@@ -63,19 +63,8 @@ public class Practica3NTP extends javax.swing.JFrame {
         ((EstadoBusqueda)estado).setTextMax(TexMaxEncontrado);
         
         //Añadimos los algoritmos
-        EstrategiaStore factoria= new EstrategiaStore();
         algoritmos= new ArrayList();
-        algoritmos.add(new Algoritmo(factoria.orderEstrategia("simple")));
-        algoritmos.add(new Algoritmo(factoria.orderEstrategia("multiple")));
-        algoritmos.add(new Algoritmo(factoria.orderEstrategia("recocido")));  
-        
-        algoritmos.get(0).addRange(-10.0, 10.0);
-        algoritmos.get(1).addRange(-10.0, 10.0);
-        algoritmos.get(2).addRange(-10.0, 10.0);
-        
-        buscador1.setAlgoritmo(algoritmos);
-        buscador2.setAlgoritmo(algoritmos);
-        buscador3.setAlgoritmo(algoritmos);
+        //cambiarRangos(-10.0,10.0);
         
     }
     
@@ -92,6 +81,13 @@ public class Practica3NTP extends javax.swing.JFrame {
     }
     
     public void cambiarRangos(double min, double max){
+        algoritmos.clear();
+        
+        EstrategiaStore factoria= new EstrategiaStore();
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("simple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("multiple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("recocido")));
+        
         algoritmos.get(0).addRange(min, max);
         algoritmos.get(1).addRange(min, max);
         algoritmos.get(2).addRange(min, max);
@@ -152,7 +148,9 @@ public class Practica3NTP extends javax.swing.JFrame {
         Cambio = new javax.swing.JButton();
 
         parametros.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        parametros.setMaximumSize(new java.awt.Dimension(250, 200));
         parametros.setMinimumSize(new java.awt.Dimension(250, 200));
+        parametros.setPreferredSize(new java.awt.Dimension(250, 200));
         parametros.setResizable(false);
 
         siguiente.setText("Siguiente");
@@ -522,6 +520,7 @@ public class Practica3NTP extends javax.swing.JFrame {
             LabelFuncion.setText(fDibujable.toString());
             TextFunc.setText(f.toString());
             
+            cambiarRangos(rangoMin,rangoMax);
             lanzarEjecucion();
             parametros.setVisible(false);
             Monitor.setVisible(true);
