@@ -3,6 +3,7 @@ package ntpfinal;
 import Estrategias.Algoritmo;
 import Estrategias.EstrategiaStore;
 import Funcion.Funcion;
+import Funcion.FuncionStore;
 import Funcion.Incognita;
 import Funcion.Operaciones;
 import Observador.Observable;
@@ -23,9 +24,12 @@ public class NTPFINAL {
         Observable estado= EstadoBusqueda.getInstance();
         Buscador buscador1= new Buscador(1);
         Buscador buscador2= new Buscador(2);
+        Buscador buscador3= new Buscador(0);
+        
         
         estado.addObservador(buscador1);
         estado.addObservador(buscador2);
+        estado.addObservador(buscador3);
         //Creamos una funcion
         Funcion f = new Funcion();
         Incognita x1 = f.addIncognita();
@@ -43,9 +47,18 @@ public class NTPFINAL {
         f2.Set(Operaciones.Sum(21.5, Operaciones.Mul(x11, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x11)))));
         f2.Set(Operaciones.Sum(f2.Get(), Operaciones.Mul(x22, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x22)))));
         
+        Funcion f3 = new Funcion();
+        Incognita x111 = f3.addIncognita();
+        Incognita x222 = f3.addIncognita();
+       
+        f3.Set(Operaciones.Sum(21.5, Operaciones.Mul(x111, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x111)))));
+        f3.Set(Operaciones.Sum(f3.Get(), Operaciones.Mul(x222, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x222)))));
+        //
+        FuncionStore fs= new FuncionStore();
         //Añadimos a los observadores la función
-        buscador1.setFuncion(f);
-        buscador2.setFuncion(f2);
+        buscador1.setFuncion(fs.orderFuncion(3));
+        buscador2.setFuncion(fs.orderFuncion(3));
+        buscador3.setFuncion(fs.orderFuncion(3));
         
         //Factoría Estrategia
         EstrategiaStore factoria= new EstrategiaStore();
@@ -59,14 +72,17 @@ public class NTPFINAL {
         
         algoritmos.get(0).addRange(-0.5, 0.5);
         algoritmos.get(1).addRange(-0.5, 0.5);
+        algoritmos.get(2).addRange(-0.5, 0.5);
         
         buscador1.setAlgoritmo(algoritmos);
         buscador2.setAlgoritmo(algoritmos);
+        buscador3.setAlgoritmo(algoritmos);
         
         //Creamos un contenedor de hebras y ejecutamos las hebras buscadoras
-        ExecutorService executor= Executors.newFixedThreadPool(2);
+        ExecutorService executor= Executors.newFixedThreadPool(3);
         executor.execute(buscador1);
         executor.execute(buscador2);
+        executor.execute(buscador3);
     }
     
 }

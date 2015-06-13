@@ -7,15 +7,22 @@
 package ntpfinal;
 
 import Drawable.FuncionDibujable;
+import Estrategias.Algoritmo;
+import Estrategias.EstrategiaStore;
+import Funcion.Funcion;
 import Funcion.FuncionStore;
-import Funcion.Incognita;
-import Funcion.Operacion;
-import Funcion.Operaciones;
+import Observador.Buscador;
+import Observador.EstadoBusqueda;
+import Observador.Observable;
+import Observador.Observer;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Benjamín
+ * @author Benjamín y Vicente
  */
 public class Practica3NTP extends javax.swing.JFrame {
 
@@ -23,6 +30,13 @@ public class Practica3NTP extends javax.swing.JFrame {
      * Creates new form Practica3NTP
      */
     FuncionDibujable fDibujable;
+    Funcion f;
+    
+    Observable estado;
+    Buscador buscador1;
+    Buscador buscador2;
+    Buscador buscador3;
+    ArrayList<Algoritmo> algoritmos;
     
     public Practica3NTP() {
         initComponents();
@@ -33,6 +47,55 @@ public class Practica3NTP extends javax.swing.JFrame {
         parametros.setVisible(true);
         
         fDibujable = new FuncionDibujable();
+        
+        //Inicializamos el Observable y los observadores.
+        estado= EstadoBusqueda.getInstance();
+        buscador1= new Buscador(1);
+        buscador2= new Buscador(2);
+        buscador3= new Buscador(0);
+        
+        buscador1.setTextCampo(TexEstrategiaB1);
+        buscador2.setTextCampo(TexEstrategiaB2);
+        buscador3.setTextCampo(TexEstrategiaB3);
+        
+        estado.addObservador(buscador1);
+        estado.addObservador(buscador2);
+        estado.addObservador(buscador3);
+        ((EstadoBusqueda)estado).setTextMax(TexMaxEncontrado);
+        
+        //Añadimos los algoritmos
+        EstrategiaStore factoria= new EstrategiaStore();
+        algoritmos= new ArrayList();
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("simple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("multiple")));
+        algoritmos.add(new Algoritmo(factoria.orderEstrategia("recocido")));  
+        
+        algoritmos.get(0).addRange(-10.0, 10.0);
+        algoritmos.get(1).addRange(-10.0, 10.0);
+        algoritmos.get(2).addRange(-10.0, 10.0);
+        
+        buscador1.setAlgoritmo(algoritmos);
+        buscador2.setAlgoritmo(algoritmos);
+        buscador3.setAlgoritmo(algoritmos);
+        
+    }
+    
+    public void lanzarEjecucion(){
+        buscador1.setFuncion(new Funcion(f));
+        buscador2.setFuncion(new Funcion(f));
+        buscador3.setFuncion(new Funcion(f));
+        
+        //Creamos un contenedor de hebras y ejecutamos las hebras buscadoras
+        ExecutorService executor= Executors.newFixedThreadPool(3);
+        executor.execute(buscador1);
+        executor.execute(buscador2);
+        executor.execute(buscador3);
+    }
+    
+    public void cambiarRangos(double min, double max){
+        algoritmos.get(0).addRange(min, max);
+        algoritmos.get(1).addRange(min, max);
+        algoritmos.get(2).addRange(min, max);
     }
 
     /**
@@ -56,6 +119,18 @@ public class Practica3NTP extends javax.swing.JFrame {
         yMin = new javax.swing.JTextField();
         yMax = new javax.swing.JTextField();
         funciones = new javax.swing.JComboBox();
+        Monitor = new javax.swing.JFrame();
+        jLabel12 = new javax.swing.JLabel();
+        TexEstrategiaB1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        TextFunc = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        TexMaxEncontrado = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        TexEstrategiaB2 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        TexEstrategiaB3 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         LabelFuncion = new javax.swing.JLabel();
         lienzo = new Drawable.Lienzo();
@@ -174,6 +249,101 @@ public class Practica3NTP extends javax.swing.JFrame {
                     .addComponent(funciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        Monitor.setMaximumSize(new java.awt.Dimension(400, 370));
+        Monitor.setMinimumSize(new java.awt.Dimension(400, 370));
+        Monitor.setPreferredSize(new java.awt.Dimension(400, 370));
+        Monitor.setResizable(false);
+
+        jLabel12.setText("Función:");
+
+        TexEstrategiaB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TexEstrategiaB1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Máximo encontrado:");
+
+        TextFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextFuncActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Estrategia B1:");
+
+        TexMaxEncontrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TexMaxEncontradoActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Estrategia B2:");
+
+        TexEstrategiaB2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TexEstrategiaB2ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Estrategia B3:");
+
+        TexEstrategiaB3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TexEstrategiaB3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MonitorLayout = new javax.swing.GroupLayout(Monitor.getContentPane());
+        Monitor.getContentPane().setLayout(MonitorLayout);
+        MonitorLayout.setHorizontalGroup(
+            MonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MonitorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TexEstrategiaB1)
+                    .addComponent(TextFunc)
+                    .addComponent(TexMaxEncontrado)
+                    .addComponent(TexEstrategiaB2)
+                    .addGroup(MonitorLayout.createSequentialGroup()
+                        .addGroup(MonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17))
+                        .addGap(0, 171, Short.MAX_VALUE))
+                    .addComponent(TexEstrategiaB3))
+                .addContainerGap())
+        );
+        MonitorLayout.setVerticalGroup(
+            MonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MonitorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(TextFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(TexMaxEncontrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TexEstrategiaB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TexEstrategiaB2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TexEstrategiaB3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jLabel13.setText("jLabel13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(655, 522));
@@ -324,7 +494,7 @@ public class Practica3NTP extends javax.swing.JFrame {
             double rangoMax = Double.parseDouble(xMax.getText());
             
             FuncionStore factoria = new FuncionStore();
-            
+            f= factoria.orderFuncion(funciones.getSelectedIndex());
             fDibujable = new FuncionDibujable(factoria.orderFuncion(funciones.getSelectedIndex()));
             
             fDibujable.setRangoX(rangoMin, rangoMax);
@@ -344,8 +514,11 @@ public class Practica3NTP extends javax.swing.JFrame {
             lienzo.setF(fDibujable);
          
             LabelFuncion.setText(fDibujable.toString());
+            TextFunc.setText(f.toString());
             
+            lanzarEjecucion();
             parametros.setVisible(false);
+            Monitor.setVisible(true);
             this.setVisible(true);
             
         }catch(NumberFormatException e){
@@ -387,6 +560,8 @@ public class Practica3NTP extends javax.swing.JFrame {
             yMinima.setText(fDibujable.getRangoMinY()+"");
             yMaxima.setText(fDibujable.getRangoMaxY()+"");
             
+            cambiarRangos(rangoMin,rangoMax);
+            
             //f.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
             lienzo.repaint();
         }catch(NumberFormatException e){
@@ -412,6 +587,26 @@ public class Practica3NTP extends javax.swing.JFrame {
     private void CambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambioActionPerformed
         xMaximaActionPerformed(evt);
     }//GEN-LAST:event_CambioActionPerformed
+
+    private void TexEstrategiaB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexEstrategiaB1ActionPerformed
+        
+    }//GEN-LAST:event_TexEstrategiaB1ActionPerformed
+
+    private void TextFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFuncActionPerformed
+        TextFunc.setText(f.toString());
+    }//GEN-LAST:event_TextFuncActionPerformed
+
+    private void TexMaxEncontradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexMaxEncontradoActionPerformed
+        TexMaxEncontrado.setText(estado.toString());
+    }//GEN-LAST:event_TexMaxEncontradoActionPerformed
+
+    private void TexEstrategiaB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexEstrategiaB2ActionPerformed
+        TexEstrategiaB2.setText(buscador2.toString());
+    }//GEN-LAST:event_TexEstrategiaB2ActionPerformed
+
+    private void TexEstrategiaB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexEstrategiaB3ActionPerformed
+        TexEstrategiaB3.setText(buscador3.toString());
+    }//GEN-LAST:event_TexEstrategiaB3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,10 +646,22 @@ public class Practica3NTP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cambio;
     private javax.swing.JLabel LabelFuncion;
+    private javax.swing.JFrame Monitor;
+    private javax.swing.JTextField TexEstrategiaB1;
+    private javax.swing.JTextField TexEstrategiaB2;
+    private javax.swing.JTextField TexEstrategiaB3;
+    private javax.swing.JTextField TexMaxEncontrado;
+    private javax.swing.JTextField TextFunc;
     private javax.swing.JComboBox funciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
