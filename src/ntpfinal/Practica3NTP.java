@@ -32,10 +32,18 @@ public class Practica3NTP extends javax.swing.JFrame {
         
         f = new FuncionDibujable();
         Incognita x = f.addIncognita();
-        //f.Set(Operaciones.Sin(x));
+        f.Set(Operaciones.Cos(x));
         
-        Operacion divisor = Operaciones.Res(Operaciones.Mul(x, x), 1.0); 
-        f.Set(Operaciones.Div(Operaciones.Mul(2.0, x), Operaciones.Mul(divisor, divisor)));
+        /*Operacion divisor = Operaciones.Res(Operaciones.Mul(x, x), 1.0); 
+        f.Set(Operaciones.Div(Operaciones.Mul(2.0, x), Operaciones.Mul(divisor, divisor)));*/
+        
+        /*Incognita x1 = f.addIncognita();
+        Incognita x2 = f.addIncognita();
+        
+        f.Set(Operaciones.Sum(21.5, Operaciones.Mul(x1, Operaciones.Sin(Operaciones.Mul(4* Math.PI, x1)))));
+        f.Set(Operaciones.Sum(f.Get(), Operaciones.Mul(x2, Operaciones.Sin(Operaciones.Mul(20* Math.PI, x2)))));
+        
+        x2.setValor(0.0);*/
         
         lienzo.setF(f);
          
@@ -62,6 +70,7 @@ public class Practica3NTP extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         yMin = new javax.swing.JTextField();
         yMax = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         LabelFuncion = new javax.swing.JLabel();
         lienzo = new Drawable.Lienzo();
@@ -80,7 +89,9 @@ public class Practica3NTP extends javax.swing.JFrame {
         Cambio = new javax.swing.JButton();
 
         parametros.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        parametros.setMaximumSize(new java.awt.Dimension(250, 200));
         parametros.setMinimumSize(new java.awt.Dimension(250, 200));
+        parametros.setPreferredSize(new java.awt.Dimension(250, 200));
         parametros.setResizable(false);
 
         siguiente.setText("Siguiente");
@@ -122,6 +133,8 @@ public class Practica3NTP extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin(X)", "Cos(X)", "-2x / (x^2 -1)^2", "21,5 + X * Sin(4*PI*X) + Y * Sin(20*PI*Y)", "21,5 + X * Cos(4*PI*X) + Y * Cos(20*PI*Y)" }));
+
         javax.swing.GroupLayout parametrosLayout = new javax.swing.GroupLayout(parametros.getContentPane());
         parametros.getContentPane().setLayout(parametrosLayout);
         parametrosLayout.setHorizontalGroup(
@@ -131,7 +144,8 @@ public class Practica3NTP extends javax.swing.JFrame {
                 .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametrosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, 0, 147, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(siguiente))
                     .addGroup(parametrosLayout.createSequentialGroup()
                         .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -145,7 +159,7 @@ public class Practica3NTP extends javax.swing.JFrame {
                             .addComponent(xMax)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(yMax))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 32, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         parametrosLayout.setVerticalGroup(
@@ -170,7 +184,9 @@ public class Practica3NTP extends javax.swing.JFrame {
                     .addComponent(yMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(siguiente)
+                .addGroup(parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(siguiente)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -439,6 +455,7 @@ public class Practica3NTP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cambio;
     private javax.swing.JLabel LabelFuncion;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
