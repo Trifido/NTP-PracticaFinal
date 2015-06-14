@@ -552,6 +552,8 @@ public class Practica3NTP extends javax.swing.JFrame {
             double rangoMin = Double.parseDouble(xMinima.getText());
             double rangoMax = Double.parseDouble(xMaxima.getText());
             
+            cambiarRangos(rangoMin,rangoMax);
+            
             fDibujable.setRangoX(rangoMin, rangoMax);
             
             rangoMin = Double.parseDouble(yMinima.getText());
@@ -564,7 +566,6 @@ public class Practica3NTP extends javax.swing.JFrame {
             yMinima.setText(fDibujable.getRangoMinY()+"");
             yMaxima.setText(fDibujable.getRangoMaxY()+"");
             
-            cambiarRangos(rangoMin,rangoMax);
             
             //f.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
             lienzo.repaint();
