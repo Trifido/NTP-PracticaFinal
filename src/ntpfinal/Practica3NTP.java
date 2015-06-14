@@ -161,9 +161,7 @@ public class Practica3NTP extends javax.swing.JFrame {
         Cambio = new javax.swing.JButton();
 
         parametros.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        parametros.setMaximumSize(new java.awt.Dimension(250, 200));
         parametros.setMinimumSize(new java.awt.Dimension(250, 200));
-        parametros.setPreferredSize(new java.awt.Dimension(250, 200));
         parametros.setResizable(false);
 
         siguiente.setText("Siguiente");
@@ -262,6 +260,7 @@ public class Practica3NTP extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        Monitor.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         Monitor.setMaximumSize(new java.awt.Dimension(400, 370));
         Monitor.setMinimumSize(new java.awt.Dimension(400, 370));
         Monitor.setPreferredSize(new java.awt.Dimension(400, 370));
@@ -503,6 +502,9 @@ public class Practica3NTP extends javax.swing.JFrame {
             
             rangoMin = Double.parseDouble(yMin.getText());
             rangoMax = Double.parseDouble(yMax.getText());
+            
+            cambiarRangos(rangoMin,rangoMax);
+            
             fDibujable.setRangoY(rangoMin, rangoMax);
             
             fDibujable.Draw(lienzo.getGraphics(), lienzo.getWidth(), lienzo.getHeight());
@@ -518,7 +520,6 @@ public class Practica3NTP extends javax.swing.JFrame {
             LabelFuncion.setText(fDibujable.toString());
             TextFunc.setText(f.toString());
             
-            cambiarRangos(rangoMin,rangoMax);
             lanzarEjecucion();
             parametros.setVisible(false);
             Monitor.setVisible(true);
