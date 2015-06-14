@@ -11,7 +11,11 @@ import java.util.Random;
 
 /**
  *
- * @author Vicente
+ * @author Benjamín y Vicente
+ */
+
+/**
+ * Clase que representa el algoritmo del Recocido Simulado hereda de estrategia
  */
 public class RecocidoSimulado extends Estrategia{
     protected Random ram;
@@ -20,10 +24,16 @@ public class RecocidoSimulado extends Estrategia{
         ram= new SecureRandom();
     }
     
+    @Override
     public String getTipo(){
         return "RecocidoSimulado";
     }
     
+    /**
+     * Sobrecarga de la función opera de la clase Estrategia
+     * @param fun
+     * @return Máximo: double
+    */
     @Override
     public Double opera(Funcion fun) {
         for (int i = 0; i < fun.getNumeroIncognitas(); i++){

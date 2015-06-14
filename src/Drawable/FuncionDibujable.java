@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 /**
  * Clase que hereda de función ya que a partir de las incognitas y la propia
- * función dibuja en el lienzo los puntos resultanes que va obteniendo de un
+ * función dibuja en el lienzo los puntos resultantes que va obteniendo de un
  * rango de valores.
  */
 public class FuncionDibujable extends Funcion implements Drawable{

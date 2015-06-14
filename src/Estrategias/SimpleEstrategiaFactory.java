@@ -9,6 +9,11 @@ package Estrategias;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Es una clase encargada de pasando una cadena de caracteres crear unos objetos 
+ * estrategias determinados.
+ */
 public class SimpleEstrategiaFactory {
     
     public SimpleEstrategiaFactory(){}

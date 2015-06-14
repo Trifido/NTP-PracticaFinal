@@ -8,6 +8,11 @@ import java.util.Random;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa el algoritmo de Busqueda Aleatoria Simple hereda de 
+ * estrategia
+ */
 public class BAleatoriaSimple extends Estrategia{
     protected Random ram;
     
@@ -19,6 +24,11 @@ public class BAleatoriaSimple extends Estrategia{
         return "BAleatoriaSimple";
     }
 
+    /**
+     * Sobrecarga de la función opera de la clase Estrategia
+     * @param fun
+     * @return Máximo: double
+    */
     @Override
     public Double opera(Funcion fun) {
         for (int i = 0; i < fun.getNumeroIncognitas(); i++){

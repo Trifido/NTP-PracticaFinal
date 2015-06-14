@@ -9,7 +9,12 @@ import Funcion.Funcion;
 
 /**
  *
- * @author Benjamín y Vicente 
+ * @author Benjamín y Vicente
+ */
+
+/**
+ * Clase que lleva la estrategia a utilizar para encontrar el máximo que se la 
+ * otorga al buscador
  */
 public class Algoritmo {
     private Estrategia estrategia;    
@@ -33,7 +38,13 @@ public class Algoritmo {
     public void addRange(Double min, Double max){
         estrategia.addRange(min, max);
     }
-
+    
+    /**
+    * La funcion busca es la que delega la función a la estrategia para encontrar
+    * el máximo mediante la llamada a la funcion opera.
+    * @param fun
+    * @return Máximo: double
+    */
     public Double busca(Funcion fun){
         return estrategia.opera(fun);
     }

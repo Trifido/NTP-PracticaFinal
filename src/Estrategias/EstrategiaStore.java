@@ -9,6 +9,11 @@ package Estrategias;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que mediante un atributo factoría de Estrategias y pasandole un tipo de 
+ * estrategia nos crea un objeto Estrategia.
+ */
 public class EstrategiaStore {
     SimpleEstrategiaFactory factoria;
     

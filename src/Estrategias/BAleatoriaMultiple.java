@@ -13,6 +13,12 @@ import java.util.Random;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa el algoritmo de Busqueda Aleatoria Multiple hereda de 
+ * estrategia
+ */
+
 public class BAleatoriaMultiple extends Estrategia{
     protected Random ram;
     double maximo;
@@ -21,10 +27,15 @@ public class BAleatoriaMultiple extends Estrategia{
         ram= new SecureRandom();
     }
     
+    @Override
     public String getTipo(){
         return "BAleatoriaMultiple";
     }
-
+    /**
+     * Sobrecarga de la función opera de la clase Estrategia
+     * @param fun
+     * @return Máximo: double
+    */
     @Override
     public Double opera(Funcion fun) {
         for (int i = 0; i < fun.getNumeroIncognitas(); i++){
