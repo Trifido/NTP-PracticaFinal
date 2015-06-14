@@ -9,6 +9,10 @@ package Observador;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Interfaz observador.
+ */
 public interface Observer {
     public void actualizar(double nuevoMaximo);
 }

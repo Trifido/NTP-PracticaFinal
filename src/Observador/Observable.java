@@ -6,6 +6,11 @@ import java.util.ArrayList;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase abstracta observable, contiene un array de observadores el cual llama 
+ * a cada uno a actualizar cuando se hace una notificación.
+ */
 public abstract class Observable {
     private ArrayList<Observer> observadores;
     
@@ -21,6 +26,11 @@ public abstract class Observable {
         observadores.remove(ob);
     }
     
+    /**
+     * Funcion que cuando se notifica un nuevo máximo, actualiza el máximo del 
+     * resto de observadores
+     * @param nuevoMaximo 
+     */
     protected void notificar(double nuevoMaximo){
         observadores.stream().forEach((ob) -> {
             ob.actualizar(nuevoMaximo);

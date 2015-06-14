@@ -10,6 +10,13 @@ import javax.swing.JTextField;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase observador se encarga administrar una estrategia en concreto, implementa 
+ * runnable para poder tener varios buscadores simultaneos buscando el máximo de 
+ * la función, también se encarga de decidir cuando cambiar de estrategia en 
+ * caliente y de actualzar el máximo global encontrado.
+ */
 public class Buscador implements Observer, Runnable{
     private final int id;
     private double maximoBuscado;
@@ -51,11 +58,19 @@ public class Buscador implements Observer, Runnable{
         this.funcion= funcion;
     }
     
+    /**
+     * Sobrecarga de la función actualizar de la clase observer
+     * @param nuevoMaximo
+     */
+    
     @Override
     public void actualizar(double nuevoMaximo) {
         maximoBuscado= nuevoMaximo;
     }
     
+    /**
+     * Función que se encarga de decidir el criterio para cambiar de estrategia.
+     */
     private void cambioEstrategia(){
         intentos++;
         if(intentos==20){
@@ -75,6 +90,12 @@ public class Buscador implements Observer, Runnable{
         textCampo.setText(estrategiaActiva);
     }
 
+    /**
+     * Sobrecarga de la función run de la interfaz Runnable, crea un bucle infinito
+     * llamando al algoritmo para buscar el máximo, si encuentra un valor mayor 
+     * al que ya hay, actualiza el estado, sinó revisa los criterios de cambio de
+     * estrategia y si lo cumple cambia.
+     */
     @Override
     public void run() {
         while(true){
