@@ -23,6 +23,14 @@ import javax.swing.JOptionPane;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que genera la interfaz gráfica, primero se genera un pequeño JFrame para
+ * añadir los rangos y la función que usamos, tras darle al boton siguiente nos apareceran
+ * dos JFrames uno con un plot de la función y otro con la monitorización de las hebras.
+ * Cuando se cambia los rangos del plot, los rangos de busqueda para las hebras buscadoras
+ * se modifica de forma que se pueda encontrar un máximo nuevo si la función lo permite.
+ */
 public class Practica3NTP extends javax.swing.JFrame {
     FuncionDibujable fDibujable;
     Funcion f;
@@ -32,6 +40,10 @@ public class Practica3NTP extends javax.swing.JFrame {
     Buscador buscador3;
     ArrayList<Algoritmo> algoritmos;
     
+    /**
+     * Constructor que visualiza el Jframe de parametros e inicializa las SC(EstadoBusqueda) y
+     * los buscadores (Observadores)
+     */
     public Practica3NTP() {
         initComponents();  
         setLocationRelativeTo(null);
@@ -59,6 +71,10 @@ public class Practica3NTP extends javax.swing.JFrame {
         algoritmos= new ArrayList();        
     }
     
+    /**
+     * Método que lanza la ejecución de los buscadores, las hebras son ejecutadas
+     * mediante un contenedor de hebras (ThreadPool).
+     */
     public void lanzarEjecucion(){
         buscador1.setFuncion(new Funcion(f));
         buscador2.setFuncion(new Funcion(f));
@@ -71,6 +87,12 @@ public class Practica3NTP extends javax.swing.JFrame {
         executor.execute(buscador3);
     }
     
+    /**
+     * Este método nos permite cambiar los rangos de busqueda en tiempo de ejecución.
+     * Para ello se modifican los algoritmos que usan los buscadores.
+     * @param min
+     * @param max 
+     */
     public void cambiarRangos(double min, double max){
         algoritmos.clear();
         
@@ -248,11 +270,6 @@ public class Practica3NTP extends javax.swing.JFrame {
         jLabel12.setText("Función:");
 
         TexEstrategiaB1.setEditable(false);
-        TexEstrategiaB1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TexEstrategiaB1ActionPerformed(evt);
-            }
-        });
 
         jLabel14.setText("Máximo encontrado:");
 
@@ -275,20 +292,10 @@ public class Practica3NTP extends javax.swing.JFrame {
         jLabel16.setText("Estrategia B2:");
 
         TexEstrategiaB2.setEditable(false);
-        TexEstrategiaB2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TexEstrategiaB2ActionPerformed(evt);
-            }
-        });
 
         jLabel17.setText("Estrategia B3:");
 
         TexEstrategiaB3.setEditable(false);
-        TexEstrategiaB3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TexEstrategiaB3ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout MonitorLayout = new javax.swing.GroupLayout(Monitor.getContentPane());
         Monitor.getContentPane().setLayout(MonitorLayout);
@@ -584,10 +591,6 @@ public class Practica3NTP extends javax.swing.JFrame {
         xMaximaActionPerformed(evt);
     }//GEN-LAST:event_CambioActionPerformed
 
-    private void TexEstrategiaB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexEstrategiaB1ActionPerformed
-        
-    }//GEN-LAST:event_TexEstrategiaB1ActionPerformed
-
     private void TextFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFuncActionPerformed
         TextFunc.setText(f.toString());
     }//GEN-LAST:event_TextFuncActionPerformed
@@ -595,14 +598,6 @@ public class Practica3NTP extends javax.swing.JFrame {
     private void TexMaxEncontradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexMaxEncontradoActionPerformed
         TexMaxEncontrado.setText(estado.toString());
     }//GEN-LAST:event_TexMaxEncontradoActionPerformed
-
-    private void TexEstrategiaB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexEstrategiaB2ActionPerformed
-        TexEstrategiaB2.setText(buscador2.toString());
-    }//GEN-LAST:event_TexEstrategiaB2ActionPerformed
-
-    private void TexEstrategiaB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexEstrategiaB3ActionPerformed
-        TexEstrategiaB3.setText(buscador3.toString());
-    }//GEN-LAST:event_TexEstrategiaB3ActionPerformed
 
     /**
      * @param args the command line arguments
