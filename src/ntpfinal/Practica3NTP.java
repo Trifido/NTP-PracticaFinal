@@ -494,6 +494,8 @@ public class Practica3NTP extends javax.swing.JFrame {
             double rangoMin = Double.parseDouble(xMin.getText());
             double rangoMax = Double.parseDouble(xMax.getText());
             
+            cambiarRangos(rangoMin,rangoMax);
+            
             FuncionStore factoria = new FuncionStore();
             f= factoria.orderFuncion(funciones.getSelectedIndex());
             fDibujable = new FuncionDibujable(factoria.orderFuncion(funciones.getSelectedIndex()));
@@ -503,7 +505,6 @@ public class Practica3NTP extends javax.swing.JFrame {
             rangoMin = Double.parseDouble(yMin.getText());
             rangoMax = Double.parseDouble(yMax.getText());
             
-            cambiarRangos(rangoMin,rangoMax);
             
             fDibujable.setRangoY(rangoMin, rangoMax);
             
@@ -552,7 +553,7 @@ public class Practica3NTP extends javax.swing.JFrame {
             double rangoMin = Double.parseDouble(xMinima.getText());
             double rangoMax = Double.parseDouble(xMaxima.getText());
             
-            cambiarRangos(rangoMin,rangoMax);
+            cambiarRangos(Double.parseDouble(xMinima.getText()),Double.parseDouble(xMaxima.getText()));
             
             fDibujable.setRangoX(rangoMin, rangoMax);
             
