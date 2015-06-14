@@ -11,7 +11,12 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Benjamín
+ * @author Benjamín y Vicente
+ */
+
+/**
+ * Clase que extiende de JPanel, presenta un atributo Drawable que será
+ * usado para dibujar sobre el lienzo.
  */
 public class Lienzo extends javax.swing.JPanel {
     Drawable f;
@@ -51,11 +56,6 @@ public class Lienzo extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    
-    /*Lienzo(){
-            setPreferredSize(new Dimension(500, 500));
-    }*/
-
     public void setF(Drawable f) {
         this.f = f;
     }
@@ -68,5 +68,4 @@ public class Lienzo extends javax.swing.JPanel {
         f.Draw(g, getWidth(), getHeight());
         
     }
-
 }

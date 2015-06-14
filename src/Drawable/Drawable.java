@@ -10,7 +10,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author Benjamín
+ * @author Benjamín y Vicente
  */
 
 

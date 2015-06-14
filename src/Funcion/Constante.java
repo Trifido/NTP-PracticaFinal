@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a las constantes de las funciones, hereda de la clase
+ * abstracta DecoradorOperacion
+ */
 public class Constante  extends DecoradorOperacion{
     Double valor;
 

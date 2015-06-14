@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase abstracta que hereda de la clase abstracta Operacion, a partir de esta clase
+ * podemos montar funciones mas complejas.
+ */
 public abstract class DecoradorOperacion extends Operacion {
     Operacion X;
 

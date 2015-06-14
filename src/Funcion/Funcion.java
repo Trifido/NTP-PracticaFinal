@@ -13,6 +13,14 @@ import java.util.ArrayList;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que hereda de Operacion, presenta un arrayList de incognitas que representan
+ * a las variables que va a tener la función, presenta constructores de copia para
+ * copiar incognitas, así como también presenta metodos para añadir nuevas incognitas.
+ * El metodo Maximiza es usado para que el algoritmo visite a la función y obtenga
+ * un resultado de esta.(Patron Visitor)
+ */
 public class Funcion extends Operacion{
 
     protected ArrayList<Incognita> incognitas;

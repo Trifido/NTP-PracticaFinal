@@ -14,7 +14,13 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Benjamín
+ * @author Benjamín y Vicente
+ */
+
+/**
+ * Clase que hereda de función ya que a partir de las incognitas y la propia
+ * función dibuja en el lienzo los puntos resultanes que va obteniendo de un
+ * rango de valores.
  */
 public class FuncionDibujable extends Funcion implements Drawable{
 
@@ -44,6 +50,9 @@ public class FuncionDibujable extends Funcion implements Drawable{
         initPorDefecto();
     }
     
+    /**
+     * Valores por defecto
+     */
     private void initPorDefecto(){
         Precision = 100000;
         rangoMaxX = 10;
@@ -57,6 +66,10 @@ public class FuncionDibujable extends Funcion implements Drawable{
         
     }
     
+    /**
+     * Las funciones swap las usamos por si el RangoMax introducido es menor
+     * que el RangoMin.
+     */
     void swapX(){
         if(rangoMaxX < rangoMinX){
             double aux = rangoMaxX;
@@ -113,6 +126,10 @@ public class FuncionDibujable extends Funcion implements Drawable{
         swapY();
     }
     
+    /**
+     * Función que usamos para obtener los puntos de la función e interpolarlos
+     * para así poder dibujarlos en el lienzo.
+     */
     void calculaPuntos(int ancho, int alto){
         distanciaX = Math.abs(rangoMaxX - rangoMinX);
         distanciaY = Math.abs(rangoMaxY - rangoMinY);
@@ -144,6 +161,11 @@ public class FuncionDibujable extends Funcion implements Drawable{
         return (int) (-(valor * alto)/distanciaY);
     }
     
+    /**
+     * Función que dibuja el eje de coordenadas y los distintos valores.
+     * La marcación de rayas más grandes para lo enteros: 1,2,3,...
+     * La marcación con rayas más pequeñas para: 1.5, 2.5, 3.5,....
+     */
     void paintCuadricula(Graphics g,int ancho,int alto){
         
         int tamMedia = 20;
@@ -178,7 +200,13 @@ public class FuncionDibujable extends Funcion implements Drawable{
         
     }
     
-    
+    /**
+     * Método que dibuja sobre el lienzo los puntos obtenidos y el eje de coordenadas
+     * con sus valores.
+     * @param grafico
+     * @param ancho
+     * @param alto
+     */
     @Override
     public void Draw(Graphics grafico,int ancho,int alto) {
         

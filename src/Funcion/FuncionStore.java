@@ -9,6 +9,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que mediante un atributo factoría de funciones y pasandole un tipo de función
+ * nos crea un objeto función.
+ */
 public class FuncionStore {
     SimpleFuncionFactory factoria;
     

@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a la operación Suma, extiende de DecoradorOperacion,
+ * en el constructor se le pasan dos parametros Operacion.
+ */
 public class Suma extends DecoradorOperacion {
     Operacion Y;
 

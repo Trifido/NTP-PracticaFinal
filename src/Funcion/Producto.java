@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a la operación Producto, extiende de DecoradorOperacion,
+ * en el constructor se le pasan por parametro dos objetos Operacion.
+ */
 public class Producto extends DecoradorOperacion {
     Operacion Y;
 

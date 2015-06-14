@@ -6,12 +6,16 @@
 
 package Funcion;
 
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-
 /**
  *
  * @author Benjamín y Vicente
+ */
+
+/**
+ * Operaciones hace de clase Fachada añadiendo funcionalidades sobre los objetos:
+ * Suma, Resta, Producto, Division, Seno, Coseno y Tangente.
+ * Son metodos que apartir de dos parametros que pueden ser de tipo Operacion o Double
+ * devuelven los objetos mencionados antes.
  */
 public class Operaciones {
     
@@ -97,84 +101,4 @@ public class Operaciones {
     public static DecoradorOperacion Tan(Operacion operacion){
         return new Tangente(operacion);
     }
-    
-      /////////////////////////////////////////////////////
-     //              Parse de funciones                 //
-    /////////////////////////////////////////////////////
-    
-    public static Funcion StrToFun(String equation){
-        PriorityQueue<Prioridad> oper = new PriorityQueue<>();
-        PriorityQueue<Prioridad> val = new PriorityQueue();
-        ArrayList<String> inc = new ArrayList<>();
-        
-        Funcion f = new Funcion();
-        
-      //  String regex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
-
-    // actual regex becomes (?<=[-+*/()])|(?=[-+*/()])
-/*
-        String[] parse = equation.split(regex);
-        int prioridad = 0;
-        
-        for(String i : parse){
-            boolean isNumber = true;
-            
-            try
-            {
-              Double.parseDouble(i);
-            }
-            catch(NumberFormatException e)
-            {
-              isNumber = false;
-            }
-            
-            if(isNumber){
-                val.add(new Prioridad(i, prioridad));
-            }else{
-                switch(i){
-                    case "(":
-                        prioridad++;
-                        break;
-                    case ")":
-                        prioridad--;
-                        break;
-                    case "+":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;
-                    case "-":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;
-                    case "*":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;
-                    case "/":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;
-                    case "sin":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;
-                    case "cos":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;
-                    case "tan":
-                        oper.add(new Prioridad(i, prioridad));
-                        break;  
-                        
-                    default:
-                        if (!inc.contains(i)){
-                            f.addIncognita();
-                            inc.add(i);
-                        }
-                        val.add(new Prioridad(i, prioridad));
-                        break;
-                
-                }
-            }
-        }
-        */
-          return f; 
-    }
-    
-    
-    
 }

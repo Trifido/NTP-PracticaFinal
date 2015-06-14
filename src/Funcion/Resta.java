@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a la operación Resta, extiende de DecoradorOperacion,
+ * en el constructor se pasan por parametros dos objetos Operacion.
+ */
 public class Resta extends DecoradorOperacion  {
     Operacion Y;
 

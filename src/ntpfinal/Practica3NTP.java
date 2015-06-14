@@ -24,13 +24,8 @@ import javax.swing.JOptionPane;
  * @author Benjamín y Vicente
  */
 public class Practica3NTP extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Practica3NTP
-     */
     FuncionDibujable fDibujable;
     Funcion f;
-    
     Observable estado;
     Buscador buscador1;
     Buscador buscador2;
@@ -38,11 +33,10 @@ public class Practica3NTP extends javax.swing.JFrame {
     ArrayList<Algoritmo> algoritmos;
     
     public Practica3NTP() {
-        initComponents();
-        
+        initComponents();  
         setLocationRelativeTo(null);
-        parametros.setLocationRelativeTo(null);
         
+        parametros.setLocationRelativeTo(null);  
         parametros.setVisible(true);
         
         fDibujable = new FuncionDibujable();
@@ -62,10 +56,7 @@ public class Practica3NTP extends javax.swing.JFrame {
         estado.addObservador(buscador3);
         ((EstadoBusqueda)estado).setTextMax(TexMaxEncontrado);
         
-        //Añadimos los algoritmos
-        algoritmos= new ArrayList();
-        //cambiarRangos(-10.0,10.0);
-        
+        algoritmos= new ArrayList();        
     }
     
     public void lanzarEjecucion(){

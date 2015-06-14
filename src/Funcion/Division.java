@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase Division que representa esta operación, en caso de que el dividendo
+ * sea 0 devolvemos infinito.
+ */
 public class Division extends DecoradorOperacion {
     Operacion Y;
 

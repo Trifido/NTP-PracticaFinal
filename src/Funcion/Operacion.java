@@ -10,6 +10,12 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase abstracta que contiene un objeto DecoradorOperación y además
+ * es heredado por la clase DecoradorOperación, de esta forma se permite
+ * construir funciones complejas usando el patrón Decorador.
+ */
 public abstract class Operacion {
     DecoradorOperacion X;
     

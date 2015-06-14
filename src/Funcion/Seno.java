@@ -10,6 +10,10 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a la operación Seno, extiende de DecoradorOperacion
+ */
 public class Seno extends DecoradorOperacion{
 
     public Seno(){

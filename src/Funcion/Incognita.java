@@ -10,6 +10,11 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representan a las variables de las funciones, presenta constructores y
+ * metodos para modificar y obtener valores.
+ */
 public class Incognita extends DecoradorOperacion{
     private static int INCOGNITAS = 0;
     private Double valor;

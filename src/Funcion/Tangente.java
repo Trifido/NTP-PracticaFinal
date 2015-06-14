@@ -10,6 +10,10 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a la operación Tangente, extiende de DecoradorOperacion
+ */
 public class Tangente extends DecoradorOperacion{
 
     public Tangente(){

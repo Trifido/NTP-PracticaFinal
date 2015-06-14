@@ -4,6 +4,10 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Es una clase encargada de pasando un entero crear unos objetos funciones determinados.
+ */
 public class SimpleFuncionFactory {
     public SimpleFuncionFactory(){}
     

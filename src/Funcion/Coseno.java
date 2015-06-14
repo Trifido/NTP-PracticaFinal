@@ -10,6 +10,10 @@ package Funcion;
  *
  * @author Benjamín y Vicente
  */
+
+/**
+ * Clase que representa a la operación Coseno, extiende de DecoradorOperacion
+ */
 public class Coseno extends DecoradorOperacion{
 
     public Coseno(){
